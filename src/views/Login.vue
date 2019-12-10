@@ -1,7 +1,8 @@
 <template>
   <div id="login" class="text-center">
+<br><br><br>
     <form class="form-signin" @submit.prevent="login">
-      <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
+      <h3 class="h3 mb-3 font-weight-normal">Please Sign In</h3>
       <div class="alert alert-danger" role="alert" v-if="invalidCredentials">
         Invalid username and password!
       </div>
@@ -30,6 +31,7 @@
       <router-link :to="{ name: 'register' }">Need an account?</router-link>
       <button type="submit">Sign in</button>
     </form>
+    <br><br><br>
   </div>
 </template>
 
@@ -81,5 +83,11 @@ export default {
 </script>
 
 <style>
+h3 {
+  color: blue;
+  text-align: left;
+}
+
+
 
 </style>

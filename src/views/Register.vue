@@ -45,6 +45,9 @@
 <script>
 export default {
   name: 'register',
+  components: {
+  
+  },
   data() {
     return {
       user: {
