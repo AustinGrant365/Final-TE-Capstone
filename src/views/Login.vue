@@ -3,13 +3,14 @@
 <br><br><br>
     <form class="form-signin" @submit.prevent="login">
       <h3 class="h3 mb-3 font-weight-normal">Please Sign In</h3>
+    <div class="login-container">
       <div class="alert alert-danger" role="alert" v-if="invalidCredentials">
         Invalid username and password!
       </div>
       <div class="alert alert-success" role="alert" v-if="this.$route.query.registration">
         Thank you for registering, please sign in.
       </div>
-      <label for="username" class="sr-only">Username</label>
+      <label for="username" class="sr-only">Enter the following credentials:</label>
       <input
         type="text"
         id="username"
@@ -19,7 +20,7 @@
         required
         autofocus
       />
-      <label for="password" class="sr-only">Password</label>
+      <label for="password" class="sr-only"><br></label>
       <input
         type="password"
         id="password"
@@ -28,8 +29,12 @@
         v-model="user.password"
         required
       />
-      <router-link :to="{ name: 'register' }">Need an account?</router-link>
+
+      <br>
       <button type="submit">Sign in</button>
+      <br>
+      <router-link :to="{ name: 'register' }">Need an account?</router-link>
+    </div>
     </form>
     <br><br><br>
   </div>
@@ -83,11 +88,52 @@ export default {
 </script>
 
 <style>
+
+
 h3 {
+  border-radius: 15px;
   color: blue;
-  text-align: left;
+ 
 }
 
 
+#login input {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  border-width: 1px;
+  border-style: solid;
+  padding: 16px;
+  outline: 0;
+  font-family: inherit;
+  font-size: 0.95em;
+  border-radius: 15px;
+}
+
+.login-container {
+  background: #ebebeb;
+  padding: 12px;
+  border-radius: 15px;
+  width: 25%;
+  text-align: center;
+}
+
+
+#login button[type="submit"] {
+  background: #28d;
+  border-color: transparent;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 15%;
+}
+
+#login button[type="submit"]:hover {
+  background: #17c;
+}
+
+/* Buttons' focus effect */
+#login button[type="submit"]:focus {
+  border-color: #05a;
+}
 
 </style>
