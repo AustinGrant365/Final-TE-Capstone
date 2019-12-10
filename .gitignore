@@ -96,3 +96,5 @@ log/
 target/
 
 
+#Node modules
+node_modules/
