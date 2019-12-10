@@ -1,6 +1,5 @@
 <template>
   <div id="register" class="text-center">
-    <Header/>
     <form class="form-register" @submit.prevent="register">
       <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
@@ -40,18 +39,14 @@
         Create Account
       </button>
     </form>
-    <Footer/>
   </div>
 </template>
 
 <script>
-import Header from '@/components/Header.vue';
-import Footer from '@/components/Footer.vue'
 export default {
   name: 'register',
   components: {
-    Header,
-    Footer
+  
   },
   data() {
     return {
