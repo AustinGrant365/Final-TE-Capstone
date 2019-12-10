@@ -39,14 +39,17 @@ h1 {
   font-family: 'Acme', sans-serif;
 
 }
+
 .dropdownmenu ul, .dropdownmenu li {
 	margin: 0;
 	padding: 0;
+  
 }
 .dropdownmenu ul {
 	background: gray;
 	list-style: none;
 	width: 100%;
+  
 }
 .dropdownmenu li {
 	float: left;

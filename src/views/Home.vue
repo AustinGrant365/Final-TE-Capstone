@@ -1,7 +1,39 @@
 <template>
   <div class="home">
-    <h1>Home</h1>
-    <p>You must be authenticated to see this</p>
+   <br><br>
+    <body>
+    <section id="firstName">
+    <h4>Welcome 'firstName'</h4>
+    <br>
+    <img src="#" alt="profile pic">
+    </section>   
+    
+   
+<section id="bio">
+<p><strong>Summary</strong>
+<br>Bio/Description...
+</p>
+</section>
+
+<section id="listExperience">
+<p>
+  <strong>Technical Experience</strong>
+  <br>
+  <ul>
+    <li>Project 1</li>
+    <li>Project 2</li>
+    <li>Project 3</li>
+    </ul>
+</p>
+</section>
+
+<section id="fProjects">
+  <p>
+    <small><Strong>Featured Projects:</Strong></small>
+  </p>
+</section>
+    <br><br>
+    </body>
   </div>
 </template>
 
@@ -10,3 +42,40 @@ export default {
   name: 'home'
 }
 </script>
+
+<style scoped>
+/* .grid-container {
+  display: grid;
+  grid-template: 150px / auto auto auto;
+} */
+
+* {
+  background-color: rgb(223, 223, 223);
+  border-radius: 15px;  
+}
+
+body {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-areas: 
+  "firstName bio fProjects"
+  ". listExperience .";
+grid-gap: 10px;
+}
+
+#bio {
+  grid-area: bio;
+}
+
+#firstName {
+  grid-area: firstName;
+}
+
+#fProjects {
+  grid-area: fProjects;
+}
+
+#listExperience {
+  grid-area: listExperience;
+}
+</style>

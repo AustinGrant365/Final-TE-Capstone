@@ -9,7 +9,7 @@
         There were problems registering this user.
       </div>
   
-      <label for="username" class="sr-only">Enter a username:  </label>
+      <label for="username" class="sr-only">Enter the following credentials:  </label>
       <input
         type="text"
         id="username"
@@ -20,7 +20,7 @@
         autofocus
       />
       <br>
-      <label for="password" class="sr-only">Enter a password:  </label>
+      <label for="password" class="sr-only"></label>
       <input
         type="password"
         id="password"
@@ -38,7 +38,7 @@
         v-model="user.confirmPassword"
         required
       />
-      <br><br>
+      <br>
       <button class="btn btn-lg btn-primary btn-block" type="submit">
         Create Account
       </button>
@@ -103,12 +103,25 @@ export default {
   text-align: left;
 }
 
+ input {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  border-width: 1px;
+  border-style: solid;
+  padding: 16px;
+  outline: 0;
+  font-family: inherit;
+  font-size: 0.95em;
+  border-radius: 15px;
+}
+
 button[type="submit"] {
   background: #28d;
   border-color: transparent;
   color: #fff;
   cursor: pointer;
-  border-radius: 15%;
+  border-radius: 15px;
 }
 
 button[type="submit"]:hover {
