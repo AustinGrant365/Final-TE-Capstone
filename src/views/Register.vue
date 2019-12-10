@@ -1,11 +1,15 @@
 <template>
   <div id="register" class="text-center">
+    <br>
+    
     <form class="form-register" @submit.prevent="register">
       <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
+      <div class="login-container">
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
         There were problems registering this user.
       </div>
-      <label for="username" class="sr-only">Username</label>
+  
+      <label for="username" class="sr-only">Enter a username:  </label>
       <input
         type="text"
         id="username"
@@ -15,7 +19,8 @@
         required
         autofocus
       />
-      <label for="password" class="sr-only">Password</label>
+      <br>
+      <label for="password" class="sr-only">Enter a password:  </label>
       <input
         type="password"
         id="password"
@@ -24,6 +29,7 @@
         v-model="user.password"
         required
       />
+      
       <input
         type="password"
         id="confirmPassword"
@@ -32,12 +38,18 @@
         v-model="user.confirmPassword"
         required
       />
-      <router-link :to="{ name: 'login' }">
-        Have an account?
-      </router-link>
+      <br><br>
       <button class="btn btn-lg btn-primary btn-block" type="submit">
         Create Account
       </button>
+      <br><br>
+      <router-link :to="{ name: 'login' }">
+        <small>If you already have an account, click here.</small>
+      </router-link>
+      </div>
+  <br>
+  <br>
+  <br>
     </form>
   </div>
 </template>
@@ -84,4 +96,28 @@ export default {
 </script>
 
 <style>
+.login-container {
+  background: #ebebeb;
+  padding: 12px;
+  border-radius: 15px;
+  text-align: left;
+}
+
+button[type="submit"] {
+  background: #28d;
+  border-color: transparent;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 15%;
+}
+
+button[type="submit"]:hover {
+  background: #17c;
+}
+
+/* Buttons' focus effect */
+button[type="submit"]:focus {
+  border-color: #05a;
+}
+
 </style>

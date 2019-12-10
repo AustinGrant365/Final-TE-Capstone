@@ -1,7 +1,7 @@
 <template>
 <div id="main-container">
   <nav class="dropdownmenu">
-    <h1>Profolio</h1>
+    <h1><u>Profolio</u></h1>
   <ul>
     <li><router-link to="/">Home</router-link></li>
     <li><router-link to="/login">Login</router-link></li>
@@ -33,6 +33,12 @@ export default {
 </script>
 
 <style>
+
+@import url('https://fonts.googleapis.com/css?family=Acme&display=swap');
+h1 {
+  font-family: 'Acme', sans-serif;
+
+}
 .dropdownmenu ul, .dropdownmenu li {
 	margin: 0;
 	padding: 0;
