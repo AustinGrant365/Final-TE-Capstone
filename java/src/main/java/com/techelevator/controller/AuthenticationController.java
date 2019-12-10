@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.techelevator.model.UserDAO;
 
-@Controller
+//@Controller
 public class AuthenticationController {
 
 	private UserDAO userDAO;
