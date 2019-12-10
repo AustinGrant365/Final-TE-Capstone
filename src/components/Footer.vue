@@ -1,5 +1,5 @@
 <template>
-    <h1>Profolio</h1>
+    <small>2019 Capstone</small>
 </template>
 
 <script>
