@@ -1,6 +1,23 @@
 <template>
   <div id="login" class="text-center">
-<br><br><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <form class="form-signin" @submit.prevent="login">
       <h3 class="h3 mb-3 font-weight-normal">Please Sign In</h3>
     <div class="login-container">
@@ -116,6 +133,7 @@ h3 {
   border-radius: 15px;
   width: 25%;
   text-align: center;
+  align-self: auto;
 }
 
 

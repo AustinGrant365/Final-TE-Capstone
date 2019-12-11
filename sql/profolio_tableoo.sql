@@ -1,4 +1,4 @@
-begin transaction;
+
 
 CREATE TABLE app_user (
   user_id SERIAL PRIMARY KEY,
@@ -185,6 +185,3 @@ CREATE TABLE staff_user (
 );
 
 
-rollback;
-
-end transaction;
