@@ -3,7 +3,7 @@
   <nav class="dropdownmenu">
    
   <ul>
-	  <li>Profolio</li>
+	<li>Profolio</li>
     <li><router-link to="/">Home</router-link></li>
     <li><router-link to="/login">Login</router-link></li>
     <li><router-link to="/register">Register</router-link>
@@ -18,12 +18,6 @@
   </ul>
   </nav>
   <br>
-
-    <!-- <ul>
-    <li><router-link to="/">Home</router-link></li>
-    <li><router-link to="/login">Login</router-link></li>
-    <li><router-link to="/register">register</router-link></li>
-  </ul> -->
 </div>
 </template>
 
