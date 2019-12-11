@@ -1,33 +1,7 @@
 <template>
 <div id="main-container">
-  <!-- <nav class="dropdownmenu">
-   
-  <ul>
-	<li>Profolio</li>
-    <li><router-link to="/">Home</router-link></li>
-    <li><router-link to="/login">Login</router-link></li>
-    <li><router-link to="/register">Register</router-link>
-      <ul id="submenu">
-        <li><router-link to="#">Link</router-link></li>
-        <li><router-link to="#">Link 2</router-link></li>
-        <li><router-link to="#">Link 3</router-link></li>
-      </ul>
-    </li>
-    <li><router-link to="#">News</router-link></li>
-    <li><router-link to="#">Contact Us</router-link></li>
-  </ul>
-  </nav>
-  <br> -->
-
-
-
-
-
-
-
-
-
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  
+<nav class="navbar navbar-expand-lg navbar-dark "  style="background-color: #3281a8;">
   <a class="navbar-brand" href="#">Profolio</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
