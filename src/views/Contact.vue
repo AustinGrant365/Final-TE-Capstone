@@ -1,5 +1,8 @@
 <template>
 <div class="contact">
+    <br>
+    <br>
+    <body>
     <h2>Contact US</h2>
     <br>
     <p>Thank you for visiting our site.<br>
@@ -15,12 +18,12 @@
     </div>
     <br>
 
-  
+    </body>
 </div>
 </template>
 
 <script>
 export default {
-    
+    name: contact
 }
 </script>
