@@ -93,7 +93,7 @@ export default {
 h3 {
   border-radius: 15px;
   color: blue;
- 
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 

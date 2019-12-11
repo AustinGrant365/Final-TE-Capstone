@@ -8,8 +8,31 @@
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
         There were problems registering this user.
       </div>
-  
-      <label for="username" class="sr-only">Enter the following credentials:  </label>
+      <p>Select account type</p>
+      <input 
+        type="radio"
+        id="student"
+        name="account-type"
+        value="student"
+        />
+      <label for="student"> Student</label>
+      
+      <input 
+        type="radio"
+        id="employer"
+        name="account-type"
+        value="employer"
+        /> 
+      <label for="employer"> Employer</label>
+      
+      <input 
+        type="radio"
+        id="staff"
+        name="account-type"
+        value="staff"
+        /> 
+      <label for="staff"> Staff</label>  
+<br><br>
       <input
         type="text"
         id="username"
@@ -20,7 +43,7 @@
         autofocus
       />
       <br>
-      <label for="password" class="sr-only"></label>
+      <!-- <label for="password" class="sr-only"></label> -->
       <input
         type="password"
         id="password"
@@ -29,7 +52,7 @@
         v-model="user.password"
         required
       />
-      
+      <br>
       <input
         type="password"
         id="confirmPassword"
@@ -132,5 +155,27 @@ button[type="submit"]:hover {
 button[type="submit"]:focus {
   border-color: #05a;
 }
+
+.form-register label {
+  display : inline-block;
+  width: 200px;
+  padding: 10px;
+  border: solid 2px #ccc;
+  transition: all 0.3;
+  width: 20%;
+  text-align: center;
+  border-radius: 15px;
+  margin: 8px;
+}
+
+.form-register input[type="radio"]{
+  display: none;
+}
+
+.form-register 
+input[type="radio"]:checked + label {
+  border: solid 2px #17c;
+}
+
 
 </style>

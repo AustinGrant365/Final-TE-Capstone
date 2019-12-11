@@ -1,8 +1,9 @@
 <template>
 <div id="main-container">
   <nav class="dropdownmenu">
-    <h1><u>Profolio</u></h1>
+   
   <ul>
+	  <li>Profolio</li>
     <li><router-link to="/">Home</router-link></li>
     <li><router-link to="/login">Login</router-link></li>
     <li><router-link to="/register">Register</router-link>
@@ -35,10 +36,7 @@ export default {
 <style>
 
 @import url('https://fonts.googleapis.com/css?family=Acme&display=swap');
-h1 {
-  font-family: 'Acme', sans-serif;
 
-}
 
 .dropdownmenu ul, .dropdownmenu li {
 	margin: 0;
@@ -60,7 +58,6 @@ h1 {
 	background: #30A6E6;
 	color: #FFFFFF;
 	display: block;
-	font: bold 12px/20px sans-serif;
 	padding: 10px 25px;
 	text-align: center;
 	text-decoration: none;
@@ -96,6 +93,8 @@ li:hover ul#submenu {
 #submenu a {
 	background-color:#000000;
 }
+
+
 
 </style>
 
