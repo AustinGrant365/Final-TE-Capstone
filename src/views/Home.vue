@@ -15,6 +15,18 @@
 </p>
 </section>
 
+<section id="about">
+<p><strong><small>About</small></strong><br>
+Full Name<br>
+Occupation
+</p>
+</section>
+
+<section id="Project1">
+<h4>Project 1</h4>
+<p>Information about project 1...</p>
+</section>
+
 <section id="listExperience">
 <p>
   <strong>Technical Experience</strong>
@@ -59,12 +71,20 @@ body {
   grid-template-columns: 1fr 2fr 1fr;
   grid-template-areas: 
   "firstName bio fProjects"
-  ". listExperience .";
+  "about listExperience fProjects"
+  ". Project1 .";
 grid-gap: 10px;
 }
 
 #bio {
   grid-area: bio;
+}
+#Project1 {
+  grid-area: Project1;
+}
+#about {
+  grid-area: about;
+  font-size: 8pt;
 }
 
 #firstName {
