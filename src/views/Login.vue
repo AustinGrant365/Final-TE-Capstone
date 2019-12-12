@@ -1,14 +1,19 @@
 <template>
+  <div class="login-page">
+    <br>
+    
+    
   <div id="login" class="text-center">
     <form class="form-signin" @submit.prevent="login">
-      <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
+    <div id="login-container" class="text-center">
       <div class="alert alert-danger" role="alert" v-if="invalidCredentials">
         Invalid username and password!
       </div>
       <div class="alert alert-success" role="alert" v-if="this.$route.query.registration">
         Thank you for registering, please sign in.
       </div>
-      <label for="username" class="sr-only">Username</label>
+      
+      <p>Log in to your Profolio</p>
       <input
         type="text"
         id="username"
@@ -18,7 +23,8 @@
         required
         autofocus
       />
-      <label for="password" class="sr-only">Password</label>
+      <br>
+      <label for="password" class="sr-only"><br></label>
       <input
         type="password"
         id="password"
@@ -27,9 +33,15 @@
         v-model="user.password"
         required
       />
-      <router-link :to="{ name: 'register' }">Need an account?</router-link>
+
+      <br>
       <button type="submit">Sign in</button>
+      <br>
+      <router-link to="/register">Need an account?</router-link>
+    </div>
     </form>
+    <br><br><br>
+  </div>
   </div>
 </template>
 
@@ -81,5 +93,54 @@ export default {
 </script>
 
 <style>
+
+.login-page {
+  text-align: center;
+}
+
+.text-center {
+  display: inline-block;
+  width: 100%;
+}
+
+#login input {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  border-width: 1px;
+  border-style: solid;
+  padding: 16px;
+  outline: 0;
+  font-family: inherit;
+  font-size: 0.95em;
+  border-radius: 15px;
+}
+
+#login-container {
+  
+  background: #ebebeb;
+  padding: 12px;
+  border-radius: 15px;
+  width: 25%;
+}
+
+
+#login button[type="submit"] {
+  background: #28d;
+  border-color: transparent;
+  color: #fff;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 15px;
+}
+
+#login button[type="submit"]:hover {
+  background: #17c;
+}
+
+/* Buttons' focus effect */
+#login button[type="submit"]:focus {
+  border-color: #05a;
+}
 
 </style>

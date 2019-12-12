@@ -4,6 +4,7 @@ import auth from './auth'
 import Home from './views/Home.vue'
 import Login from './views/Login.vue'
 import Register from './views/Register.vue'
+import Contact from './views/Contact'
 
 Vue.use(Router)
 
@@ -25,7 +26,7 @@ const router = new Router({
       name: 'home',
       component: Home,
       meta: {
-        requiresAuth: true
+        requiresAuth: false
       }
     },
     {
@@ -40,6 +41,14 @@ const router = new Router({
       path: "/register",
       name: "register",
       component: Register,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: "/contact",
+      name: "Contact",
+      component: Contact,
       meta: {
         requiresAuth: false
       }

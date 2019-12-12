@@ -1,11 +1,35 @@
 <template>
+<div class="register-page">
+  <br>
+
+
+
   <div id="register" class="text-center">
     <form class="form-register" @submit.prevent="register">
       <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
+      <div class="login-container">
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
         There were problems registering this user.
       </div>
-      <label for="username" class="sr-only">Username</label>
+      
+      <p>Select account type:</p>
+      <input 
+        type="radio"
+        id="student"
+        name="account-type"
+        value="student"
+        />
+      <label for="student"> Student</label>
+      <br>
+      <input 
+        type="radio"
+        id="employer"
+        name="account-type"
+        value="employer"
+        /> 
+      <label for="employer"> Employer</label>
+      
+<br><br>
       <input
         type="text"
         id="username"
@@ -15,7 +39,7 @@
         required
         autofocus
       />
-      <label for="password" class="sr-only">Password</label>
+      <br>
       <input
         type="password"
         id="password"
@@ -24,6 +48,7 @@
         v-model="user.password"
         required
       />
+      <br>
       <input
         type="password"
         id="confirmPassword"
@@ -32,14 +57,20 @@
         v-model="user.confirmPassword"
         required
       />
-      <router-link :to="{ name: 'login' }">
-        Have an account?
-      </router-link>
+      <br>
       <button class="btn btn-lg btn-primary btn-block" type="submit">
         Create Account
       </button>
+      <br>     <router-link :to="{ name: 'login' }">
+        <small>If you already have an account, click here.</small>
+      </router-link>
+      </div>
+  <br>
+  <br>
+  <br>
     </form>
   </div>
+</div>
 </template>
 
 <script>
@@ -48,6 +79,7 @@ export default {
   components: {
   
   },
+
   data() {
     return {
       user: {
@@ -84,4 +116,102 @@ export default {
 </script>
 
 <style>
-</style>
+
+.login-page {
+  text-align: center;
+}
+
+.text-center {
+  display: inline-block;
+  width: 100%;
+}
+
+
+
+.form-register{
+  display: inline-block;
+  width: 30%;
+}
+
+.login-container {
+  background: #ebebeb;
+  padding: 12px;
+  border-radius: 15px;
+  text-align: center;
+  width: 100%
+}
+
+ input {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  border-width: 1px;
+  border-style: solid;
+  padding: 16px;
+  outline: 0;
+  font-family: inherit;
+  font-size: 0.95em;
+  border-radius: 15px;
+}
+
+button[type="submit"] {
+  background: #28d;
+  border-color: transparent;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 15px;
+}
+
+
+
+input[type="text"] {
+  border-radius: 15px;
+}
+
+input[type="password"] {
+  border-radius: 15px;
+}
+
+button[type="submit"]:hover {
+  background: #17c;
+}
+
+/* Buttons' focus effect */
+button[type="submit"]:focus {
+  border-color: #05a;
+}
+
+.form-register label {
+  display : inline-block;
+  width: 200px;
+  padding: 10px;
+  border: solid 2px #ccc;
+  transition: all 0.3;
+  width: 100%;
+  text-align: center;
+  border-radius: 15px;
+  margin: 8px;
+}
+
+.form-register input[type="radio"]{
+  
+  display: none;
+  width:100%;
+}
+
+.form-register 
+input[type="radio"]:checked + label {
+  border: solid 2px #17c;
+  width: 100%
+}
+
+/* #register {
+  display: inline-block;
+  width: 100%;
+
+} */
+
+/* .register-parent {
+  text-align: center;
+} */
+</style> 
