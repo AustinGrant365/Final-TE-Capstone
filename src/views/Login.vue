@@ -130,7 +130,8 @@ export default {
   border-color: transparent;
   color: #fff;
   cursor: pointer;
-  border-radius: 15%;
+  width: 100%;
+  border-radius: 15px;
 }
 
 #login button[type="submit"]:hover {

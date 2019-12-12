@@ -1,14 +1,17 @@
 <template>
-<div class="register-parent">
+<div class="register-page">
+  <br>
+
+
+
   <div id="register" class="text-center">
-    <br>
-    
     <form class="form-register" @submit.prevent="register">
       <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
       <div class="login-container">
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
         There were problems registering this user.
       </div>
+      
       <p>Select account type:</p>
       <input 
         type="radio"
@@ -17,7 +20,7 @@
         value="student"
         />
       <label for="student"> Student</label>
-      
+      <br>
       <input 
         type="radio"
         id="employer"
@@ -37,7 +40,6 @@
         autofocus
       />
       <br>
-      <!-- <label for="password" class="sr-only"></label> -->
       <input
         type="password"
         id="password"
@@ -114,11 +116,29 @@ export default {
 </script>
 
 <style>
+
+.login-page {
+  text-align: center;
+}
+
+.text-center {
+  display: inline-block;
+  width: 100%;
+}
+
+
+
+.form-register{
+  display: inline-block;
+  width: 30%;
+}
+
 .login-container {
   background: #ebebeb;
   padding: 12px;
   border-radius: 15px;
-  text-align: left;
+  text-align: center;
+  width: 100%
 }
 
  input {
@@ -141,9 +161,7 @@ button[type="submit"] {
   cursor: pointer;
   border-radius: 15px;
 }
-/* .form-control {
-  border-radius: 15px;
-} */
+
 
 
 input[type="text"] {
@@ -169,29 +187,31 @@ button[type="submit"]:focus {
   padding: 10px;
   border: solid 2px #ccc;
   transition: all 0.3;
-  width: 20%;
+  width: 100%;
   text-align: center;
   border-radius: 15px;
   margin: 8px;
 }
 
 .form-register input[type="radio"]{
-  display: none;
   
+  display: none;
+  width:100%;
 }
 
 .form-register 
 input[type="radio"]:checked + label {
   border: solid 2px #17c;
+  width: 100%
 }
 
-#register {
+/* #register {
   display: inline-block;
-  width: 50%;
+  width: 100%;
 
-}
+} */
 
-.register-parent {
+/* .register-parent {
   text-align: center;
-}
-</style>
+} */
+</style> 
