@@ -20,8 +20,8 @@ import javax.validation.Valid;
 @CrossOrigin
 @RestController
 public class AccountController {
-//    @Autowired
-//    UserRepository userRep;
+    @Autowired
+    UserRepository userRep;
     
     @Autowired
     private AuthProvider auth;
