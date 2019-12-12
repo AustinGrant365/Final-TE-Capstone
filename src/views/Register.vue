@@ -1,4 +1,5 @@
 <template>
+<div class="register-parent">
   <div id="register" class="text-center">
     <br>
     
@@ -8,7 +9,7 @@
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
         There were problems registering this user.
       </div>
-      <p>Select account type</p>
+      <p>Select account type:</p>
       <input 
         type="radio"
         id="student"
@@ -25,13 +26,6 @@
         /> 
       <label for="employer"> Employer</label>
       
-      <input 
-        type="radio"
-        id="staff"
-        name="account-type"
-        value="staff"
-        /> 
-      <label for="staff"> Staff</label>  
 <br><br>
       <input
         type="text"
@@ -65,8 +59,7 @@
       <button class="btn btn-lg btn-primary btn-block" type="submit">
         Create Account
       </button>
-      <br><br>
-      <router-link :to="{ name: 'login' }">
+      <br>     <router-link :to="{ name: 'login' }">
         <small>If you already have an account, click here.</small>
       </router-link>
       </div>
@@ -75,6 +68,7 @@
   <br>
     </form>
   </div>
+</div>
 </template>
 
 <script>
@@ -83,6 +77,7 @@ export default {
   components: {
   
   },
+
   data() {
     return {
       user: {
@@ -146,6 +141,18 @@ button[type="submit"] {
   cursor: pointer;
   border-radius: 15px;
 }
+/* .form-control {
+  border-radius: 15px;
+} */
+
+
+input[type="text"] {
+  border-radius: 15px;
+}
+
+input[type="password"] {
+  border-radius: 15px;
+}
 
 button[type="submit"]:hover {
   background: #17c;
@@ -170,6 +177,7 @@ button[type="submit"]:focus {
 
 .form-register input[type="radio"]{
   display: none;
+  
 }
 
 .form-register 
@@ -177,5 +185,13 @@ input[type="radio"]:checked + label {
   border: solid 2px #17c;
 }
 
+#register {
+  display: inline-block;
+  width: 50%;
 
+}
+
+.register-parent {
+  text-align: center;
+}
 </style>

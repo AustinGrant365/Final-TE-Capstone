@@ -1,33 +1,19 @@
 <template>
+  <div class="login-page">
+    <br>
+    
+    
   <div id="login" class="text-center">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <form class="form-signin" @submit.prevent="login">
-      <h3 class="h3 mb-3 font-weight-normal">Please Sign In</h3>
-    <div class="login-container">
+    <div id="login-container" class="text-center">
       <div class="alert alert-danger" role="alert" v-if="invalidCredentials">
         Invalid username and password!
       </div>
       <div class="alert alert-success" role="alert" v-if="this.$route.query.registration">
         Thank you for registering, please sign in.
       </div>
-      <label for="username" class="sr-only">Enter the following credentials:</label>
+      
+      <p>Log in to your Profolio</p>
       <input
         type="text"
         id="username"
@@ -37,6 +23,7 @@
         required
         autofocus
       />
+      <br>
       <label for="password" class="sr-only"><br></label>
       <input
         type="password"
@@ -50,10 +37,11 @@
       <br>
       <button type="submit">Sign in</button>
       <br>
-      <router-link :to="{ name: 'register' }">Need an account?</router-link>
+      <router-link to="/register">Need an account?</router-link>
     </div>
     </form>
     <br><br><br>
+  </div>
   </div>
 </template>
 
@@ -106,13 +94,14 @@ export default {
 
 <style>
 
-
-h3 {
-  border-radius: 15px;
-  color: blue;
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+.login-page {
+  text-align: center;
 }
 
+.text-center {
+  display: inline-block;
+  width: 100%;
+}
 
 #login input {
   box-sizing: border-box;
@@ -127,13 +116,12 @@ h3 {
   border-radius: 15px;
 }
 
-.login-container {
+#login-container {
+  
   background: #ebebeb;
   padding: 12px;
   border-radius: 15px;
   width: 25%;
-  text-align: center;
-  align-self: auto;
 }
 
 
