@@ -1,122 +1,114 @@
 <template>
-<div class="register-page">
-  <br>
+  <div class="register-page">
+    <br />
 
+    <div id="register" class="text-center">
+      <form class="form-register" @submit.prevent="register">
+        <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
+        <div class="login-container">
+          <div
+            class="alert alert-danger"
+            role="alert"
+            v-if="registrationErrors"
+          >There were problems registering this user.</div>
 
+          <p>Select account type:</p>
+          <input type="radio" id="student" name="account-type" value="student" />
+          <label for="student">Student</label>
+          <br />
+          <input type="radio" id="employer" name="account-type" value="employer" />
+          <label for="employer">Employer</label>
 
-  <div id="register" class="text-center">
-    <form class="form-register" @submit.prevent="register">
-      <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
-      <div class="login-container">
-      <div class="alert alert-danger" role="alert" v-if="registrationErrors">
-        There were problems registering this user.
-      </div>
-      
-      <p>Select account type:</p>
-      <input 
-        type="radio"
-        id="student"
-        name="account-type"
-        value="student"
-        />
-      <label for="student"> Student</label>
-      <br>
-      <input 
-        type="radio"
-        id="employer"
-        name="account-type"
-        value="employer"
-        /> 
-      <label for="employer"> Employer</label>
-      
-<br><br>
-      <input
-        type="text"
-        id="username"
-        class="form-control"
-        placeholder="Username"
-        v-model="user.username"
-        required
-        autofocus
-      />
-      <br>
-      <input
-        type="password"
-        id="password"
-        class="form-control"
-        placeholder="Password"
-        v-model="user.password"
-        required
-      />
-      <br>
-      <input
-        type="password"
-        id="confirmPassword"
-        class="form-control"
-        placeholder="Confirm Password"
-        v-model="user.confirmPassword"
-        required
-      />
-      <br>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">
-        Create Account
-      </button>
-      <br>     <router-link :to="{ name: 'login' }">
-        <small>If you already have an account, click here.</small>
-      </router-link>
-      </div>
-  <br>
-  <br>
-  <br>
-    </form>
+          <br />
+          <br />
+          <input
+            type="text"
+            id="username"
+            class="form-control"
+            placeholder="Username"
+            v-model="user.username"
+            required
+            autofocus
+          />
+          <br />
+          <input
+            type="password"
+            id="password"
+            class="form-control"
+            placeholder="Password"
+            v-model="user.password"
+            required
+          />
+          <br />
+          <input
+            type="password"
+            id="confirmPassword"
+            class="form-control"
+            placeholder="Confirm Password"
+            v-model="user.confirmPassword"
+            required
+          />
+          <br />
+          <button class="btn btn-lg btn-primary btn-block" type="submit">Create Account</button>
+          <br />
+          <router-link :to="{ name: 'login' }">
+            <small>If you already have an account, click here.</small>
+          </router-link>
+        </div>
+        <br />
+        <br />
+        <br />
+      </form>
+    </div>
   </div>
-</div>
 </template>
 
 <script>
 export default {
-  name: 'register',
-  components: {
-  
-  },
+  name: "register",
+  components: {},
 
   data() {
     return {
       user: {
-        username: '',
-        password: '',
-        confirmPassword: '',
-        role: 'user',
+        username: "",
+        password: "",
+        confirmPassword: "",
+        role: 5
       },
       registrationErrors: false,
+      homeUrl: "http://localhost:8085"
     };
   },
   methods: {
     register() {
-      fetch(`${process.env.VUE_APP_REMOTE_API}/register`, {
-        method: 'POST',
+      //fetch(`${process.env.VUE_APP_REMOTE_API}/register`, {
+      fetch(`${this.homeUrl}/register`, {
+        method: "POST",
         headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
+          Accept: "application/json",
+          "Content-Type": "application/json"
         },
-        body: JSON.stringify(this.user),
+        body: JSON.stringify(this.user)
       })
-        .then((response) => {
+        .then(response => {
+          console.log(response.json());
           if (response.ok) {
-            this.$router.push({ path: '/login', query: { registration: 'success' } });
+            this.$router.push({
+              path: "/login",
+              query: { registration: "success" }
+            });
           } else {
             this.registrationErrors = true;
           }
         })
-
-        .then((err) => console.error(err));
-    },
-  },
+        .then(err => console.error(err));
+    }
+  }
 };
 </script>
 
 <style>
-
 .login-page {
   text-align: center;
 }
@@ -126,9 +118,7 @@ export default {
   width: 100%;
 }
 
-
-
-.form-register{
+.form-register {
   display: inline-block;
   width: 30%;
 }
@@ -138,10 +128,10 @@ export default {
   padding: 12px;
   border-radius: 15px;
   text-align: center;
-  width: 100%
+  width: 100%;
 }
 
- input {
+input {
   box-sizing: border-box;
   display: block;
   width: 100%;
@@ -162,8 +152,6 @@ button[type="submit"] {
   border-radius: 15px;
 }
 
-
-
 input[type="text"] {
   border-radius: 15px;
 }
@@ -182,7 +170,7 @@ button[type="submit"]:focus {
 }
 
 .form-register label {
-  display : inline-block;
+  display: inline-block;
   width: 200px;
   padding: 10px;
   border: solid 2px #ccc;
@@ -193,16 +181,14 @@ button[type="submit"]:focus {
   margin: 8px;
 }
 
-.form-register input[type="radio"]{
-  
+.form-register input[type="radio"] {
   display: none;
-  width:100%;
+  width: 100%;
 }
 
-.form-register 
-input[type="radio"]:checked + label {
+.form-register input[type="radio"]:checked + label {
   border: solid 2px #17c;
-  width: 100%
+  width: 100%;
 }
 
 /* #register {

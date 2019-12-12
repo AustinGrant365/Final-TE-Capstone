@@ -20,7 +20,7 @@ public class FinalCapstoneSpringbootApplication {
 
         SpringApplication app = new SpringApplication(FinalCapstoneSpringbootApplication.class);
         app.setDefaultProperties(Collections
-          .singletonMap("server.port", "8083"));
+          .singletonMap("server.port", "8080"));
         app.run(args);
 	}
 
