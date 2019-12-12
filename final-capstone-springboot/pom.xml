@@ -66,6 +66,11 @@
             <artifactId>bcprov-jdk16</artifactId>
             <version>1.46</version>
         </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-api</artifactId>
+            <version>0.10.7</version>
+        </dependency>
     </dependencies>
 
     <build>

@@ -1,10 +1,10 @@
 package com.techelevator.finalcapstonespringboot.model;
 
 public class UserRoles {
-    public static final int   ADMIN    = 0;
-    public static final int   EMPLOYER = 1;
-    public static final int   USER     = 5;
-    public static final int[] ROLES    = new int[] { ADMIN,
-                                                     EMPLOYER,
-                                                     USER };
+    public static final Integer   ADMIN    = 0;
+    public static final Integer   EMPLOYER = 1;
+    public static final Integer   USER     = 5;
+    public static final Integer[] ROLES    = new Integer[] { ADMIN,
+                                                             EMPLOYER,
+                                                             USER };
 }

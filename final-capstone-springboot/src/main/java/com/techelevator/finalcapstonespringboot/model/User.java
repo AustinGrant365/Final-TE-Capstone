@@ -23,7 +23,7 @@ public class User {
     @NotBlank
     @Size(min = 5, max = 32, message = "User name must be at least {min} characters and not more than {max}.")
     @Column(name = "user_name", updatable = true, nullable = false, unique = true)
-    private String userName;
+    private String username;
 
     @Size(min = 10, message = "Password too short, must be at least 10.")
     @Pattern.List({
@@ -34,7 +34,7 @@ public class User {
     private String password;
 
     @Column(name = "role", updatable = true, nullable = false)
-    private Long role;
+    private Integer role;
 
     @Transient
     private String confirmPassword;
@@ -50,12 +50,12 @@ public class User {
         this.id = id;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -66,11 +66,11 @@ public class User {
         this.password = password;
     }
 
-    public Long getRole() {
+    public Integer getRole() {
         return role;
     }
 
-    public void setRole(Long role) {
+    public void setRole(Integer role) {
         this.role = role;
     }
 
@@ -96,27 +96,27 @@ public class User {
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
         return Objects.equals(getId(), user.getId()) &&
-                Objects.equals(getUserName(), user.getUserName()) &&
-                Objects.equals(getPassword(), user.getPassword()) &&
-                Objects.equals(getRole(), user.getRole()) &&
-                Objects.equals(getConfirmPassword(), user.getConfirmPassword()) &&
-                Objects.equals(getSalt(), user.getSalt());
+               Objects.equals(getUsername(), user.getUsername()) &&
+               Objects.equals(getPassword(), user.getPassword()) &&
+               Objects.equals(getRole(), user.getRole()) &&
+               Objects.equals(getConfirmPassword(), user.getConfirmPassword()) &&
+               Objects.equals(getSalt(), user.getSalt());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getUserName(), getPassword(),
+        return Objects.hash(getId(), getUsername(), getPassword(),
                             getRole(), getConfirmPassword(), getSalt());
     }
 
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
-                ", userName='" + userName + '\'' +
-                ", password='" + password + '\'' +
-                ", role=" + role +
-                ", salt='" + salt + '\'' +
-                '}';
+               "id=" + id +
+               ", userName='" + username + '\'' +
+               ", password='" + password + '\'' +
+               ", role=" + role +
+               ", salt='" + salt + '\'' +
+               '}';
     }
 }

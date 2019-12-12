@@ -14,30 +14,30 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class PasswordHasher {
-
-    private static final int KEY_LENGTH = 128;
+    
+    private static final int KEY_LENGTH  = 128;
     private static final int WORK_FACTOR = 100000;
-
+    
     private SecureRandom random;
-
+    
     public PasswordHasher() {
         random = new SecureRandom();
     }
-
+    
     /**
      * Given a clear text password and a salt, hash the password and return
      * the computed hash.
      *
      * @param clearTextPassword the password as given by the user
-     * @param salt a salt to add to the password during hashing
+     * @param salt              a salt to add to the password during hashing
      * @return the hashed password
      */
     public String computeHash(String clearTextPassword, byte[] salt) {
-        Key key = createKey(clearTextPassword, salt);
+        Key    key    = createKey(clearTextPassword, salt);
         byte[] digest = key.getEncoded();
         return new String(Base64.encode(digest));
     }
-
+    
     /**
      * Generate a new random salt.
      *
@@ -46,7 +46,7 @@ public class PasswordHasher {
     public byte[] generateRandomSalt() {
         return random.generateSeed(128);
     }
-
+    
     /**
      * This is the function that actually generates the hash. You can see that
      * it uses a work factor to generate the hash. The work factor should be high
@@ -54,13 +54,13 @@ public class PasswordHasher {
      * second to one second delay should be plenty.
      *
      * @param password the password as given by the user
-     * @param salt the random salt
+     * @param salt     the random salt
      * @return the resulting hash as a Key object
      */
     private Key createKey(String password, byte[] salt) {
         SecretKeyFactory factory = getSecretKeyFactory();
-        KeySpec keyspec = new PBEKeySpec(password.toCharArray(), salt, WORK_FACTOR, KEY_LENGTH);
-        Key key;
+        KeySpec          keyspec = new PBEKeySpec(password.toCharArray(), salt, WORK_FACTOR, KEY_LENGTH);
+        Key              key;
         try {
             key = factory.generateSecret(keyspec);
         } catch (InvalidKeySpecException e) {
@@ -69,7 +69,7 @@ public class PasswordHasher {
         }
         return key;
     }
-
+    
     private SecretKeyFactory getSecretKeyFactory() {
         SecretKeyFactory factory;
         try {

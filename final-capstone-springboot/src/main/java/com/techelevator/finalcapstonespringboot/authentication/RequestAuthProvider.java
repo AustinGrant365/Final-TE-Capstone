@@ -4,9 +4,11 @@ import java.util.Arrays;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.techelevator.model.User;
-import com.techelevator.model.UserDao;
+import com.techelevator.finalcapstonespringboot.model.User;
 
+
+import com.techelevator.finalcapstonespringboot.repository.UserRepository;
+import org.bouncycastle.util.encoders.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -15,30 +17,34 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class RequestAuthProvider implements AuthProvider {
-
+    
     private HttpServletRequest request;
-    private UserDao dao;
+    private UserRepository     repository;
+    
+    private PasswordHasher passwordHasher;
+    
     public final static String USER_KEY = "appCurrentUser";
-
+    
     @Autowired
-    public RequestAuthProvider(HttpServletRequest request, UserDao dao) {
+    public RequestAuthProvider(HttpServletRequest request, UserRepository repository) {
+        passwordHasher = new PasswordHasher();
         this.request = request;
-        this.dao = dao;
+        this.repository = repository;
     }
-
+    
     @Override
     public boolean isLoggedIn() {
         return (request.getAttribute(USER_KEY) != null);
     }
-
+    
     @Override
     public User getCurrentUser() {
         return (User) request.getAttribute(USER_KEY);
     }
-
+    
     @Override
-    public boolean signIn(String username, String password) {
-        User authenticatedUser = dao.getValidUserWithPassword(username, password);
+    public boolean signIn(User user) {
+        User authenticatedUser = repository.findByUsernameAndPassword(user.getUsername(), user.getPassword());
         if (authenticatedUser != null) {
             request.setAttribute(USER_KEY, authenticatedUser);
             return true;
@@ -46,34 +52,40 @@ public class RequestAuthProvider implements AuthProvider {
             return false;
         }
     }
-
+    
     @Override
     public void logOff() {
         request.removeAttribute(USER_KEY);
     }
-
+    
     @Override
     public boolean changePassword(String existingPassword, String newPassword) {
         User userFromSession = (User) request.getAttribute(USER_KEY);
         if (userFromSession == null) {
             return false;
         }
-        User userFromDb = dao.getValidUserWithPassword(userFromSession.getUsername(), existingPassword);
+        User userFromDb = repository.findByUsernameAndPassword(userFromSession.getUsername(), existingPassword);
         if (userFromDb != null && userFromDb.getId() == userFromDb.getId()) {
-            dao.changePassword(userFromSession, newPassword);
+            userFromSession.setPassword(newPassword);
+            repository.save(userFromSession);
             return true;
         } else {
             return false;
         }
     }
-
+    
     @Override
-    public void register(String username, String password, String role) {
-        dao.saveUser(username, password, role);
+    public void register(User user) {
+        byte[] salt = passwordHasher.generateRandomSalt();
+        String hashedPassword = passwordHasher.computeHash(user.getPassword(), salt);
+        String saltString = new String(Base64.encode(salt));
+        user.setPassword(hashedPassword);
+        user.setSalt(saltString);
+        repository.save(user);
     }
-
+    
     @Override
-    public boolean userHasRole(String[] roles) {
+    public boolean userHasRole(Integer[] roles) {
         User currentUser = getCurrentUser();
         if (currentUser != null && roles != null) {
             return Arrays.asList(roles).contains(currentUser.getRole());

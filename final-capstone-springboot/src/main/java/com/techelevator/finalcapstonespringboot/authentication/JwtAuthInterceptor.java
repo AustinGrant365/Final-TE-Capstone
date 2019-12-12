@@ -16,30 +16,30 @@ import java.util.List;
  * JwtAuthInterceptor
  */
 public class JwtAuthInterceptor implements HandlerInterceptor {
-
+    
     private static final String AUTHORIZATION_HEADER = "Authorization";
-
+    
     private List<String> excludedUrls;
-
+    
     @Autowired
     private JwtTokenHandler tokenHandler;
-
+    
     public JwtAuthInterceptor() {
     }
-
+    
     public JwtAuthInterceptor(List<String> excludedUrls) {
         this.excludedUrls = excludedUrls;
     }
-
+    
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
             throws IOException, ServletException {
-
+        
         if (excludedUrls.contains(request.getRequestURI().replaceFirst(request.getContextPath(), ""))
-                || request.getMethod().equals("OPTIONS")) {
+            || request.getMethod().equals("OPTIONS")) {
             return true;
         }
-
+        
         User authedUser = tokenHandler.getUser(request.getHeader(AUTHORIZATION_HEADER));
         if (authedUser == null) {
             response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Missing or invalid Authorization header.");
@@ -49,24 +49,24 @@ public class JwtAuthInterceptor implements HandlerInterceptor {
             return true;
         }
     }
-
+    
     /**
      * @param excludedUrls the excluded urls to set
      */
     public void setExcludedUrls(List<String> excludedUrls) {
         this.excludedUrls = excludedUrls;
     }
-
+    
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
-            ModelAndView modelAndView) throws Exception {
-
+                           ModelAndView modelAndView) throws Exception {
+        
     }
-
+    
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
             throws Exception {
-
+        
     }
-
+    
 }
