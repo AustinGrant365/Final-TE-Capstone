@@ -44,7 +44,11 @@ public class RequestAuthProvider implements AuthProvider {
     
     @Override
     public boolean signIn(User user) {
-        User authenticatedUser = repository.findByUsernameAndPassword(user.getUsername(), user.getPassword());
+        User currentUser       = repository.findByUsername(user.getUsername());
+        User authenticatedUser = repository.findByUsernameAndPassword(currentUser.getUsername(), currentUser.getPassword());
+//        System.out.println(user.toString());
+//        System.out.println(currentUser.toString());
+//        System.out.println(authenticatedUser.toString());
         if (authenticatedUser != null) {
             request.setAttribute(USER_KEY, authenticatedUser);
             return true;
@@ -76,9 +80,9 @@ public class RequestAuthProvider implements AuthProvider {
     
     @Override
     public void register(User user) {
-        byte[] salt = passwordHasher.generateRandomSalt();
+        byte[] salt           = passwordHasher.generateRandomSalt();
         String hashedPassword = passwordHasher.computeHash(user.getPassword(), salt);
-        String saltString = new String(Base64.encode(salt));
+        String saltString     = new String(Base64.encode(salt));
         user.setPassword(hashedPassword);
         user.setSalt(saltString);
         repository.save(user);
