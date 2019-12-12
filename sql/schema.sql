@@ -11,7 +11,7 @@ CREATE TABLE app_user (
   id SERIAL PRIMARY KEY,
   user_name varchar(32) NOT NULL UNIQUE,
   password varchar(32) NOT NULL,
-  role varchar(32) NOT NULL,
+  role SMALLINT NOT NULL DEFAULT 5,
   salt varchar(255) NOT NULL
 );
 

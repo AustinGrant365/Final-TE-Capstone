@@ -1,8 +1,11 @@
 package com.techelevator.model;
 
+import javax.persistence.Entity;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+
+@Entity(name = "app_user")
 public class User {
 	private String userName;
 	
