@@ -1,5 +1,6 @@
 <template>
   <div class="register-page">
+    <div class="bg" style="background-image: url('https://www.intechnic.com/hs-fs/hubfs/intechnic_2017/assets/images/landing/footer/map-xl.jpg?width=1680&height=824&name=map-xl.jpg');">
     <br />
 
     <div id="register" class="text-center">
@@ -59,6 +60,7 @@
         <br />
         <br />
       </form>
+    </div>
     </div>
   </div>
 </template>
@@ -200,4 +202,8 @@ button[type="submit"]:focus {
 /* .register-parent {
   text-align: center;
 } */
+
+.bg {
+  opacity: 0.2;
+}
 </style> 

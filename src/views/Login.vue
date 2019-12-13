@@ -1,8 +1,11 @@
 <template>
   <div class="login-page">
+    <div style="background-image: url('https://www.intechnic.com/hs-fs/hubfs/intechnic_2017/assets/images/landing/footer/map-xl.jpg?width=1680&height=824&name=map-xl.jpg');">
     <br />
 
     <div id="login" class="text-center">
+       <h2 class="login-header">Welcome.</h2>
+<br>
       <form class="form-signin" @submit.prevent="login">
         <div id="login-container" class="text-center">
           <div
@@ -48,6 +51,7 @@
       <br />
       <br />
       <br />
+    </div>
     </div>
   </div>
 </template>
@@ -151,5 +155,10 @@ export default {
 /* Buttons' focus effect */
 #login button[type="submit"]:focus {
   border-color: #05a;
+}
+
+h2 {
+        margin: auto;
+        color: white;
 }
 </style>
