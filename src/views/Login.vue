@@ -152,7 +152,6 @@ export default {
   background: #17c;
 }
 
-/* Buttons' focus effect */
 #login button[type="submit"]:focus {
   border-color: #05a;
 }
