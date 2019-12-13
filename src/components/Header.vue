@@ -16,7 +16,7 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          
+
 <li class="nav-item">
             <router-link class="nav-link" to="/login">Login</router-link>
           </li>
@@ -29,7 +29,7 @@
           <input
             class="form-control mr-sm-2"
             type="search"
-            placeholder="Search"
+            placeholder="What are you looking for?"
             aria-label="Search"
           />
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>

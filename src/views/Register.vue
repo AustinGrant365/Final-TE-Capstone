@@ -31,6 +31,7 @@
             required
             autofocus
           />
+   
           <br />
           <input
             type="password"
@@ -60,6 +61,7 @@
         <br />
         <br />
       </form>
+       
     </div>
     </div>
   </div>
@@ -203,7 +205,9 @@ button[type="submit"]:focus {
   text-align: center;
 } */
 
-.bg {
-  opacity: 0.2;
+h1 {
+  color: white;
 }
+
+
 </style> 
