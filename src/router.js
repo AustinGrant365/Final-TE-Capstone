@@ -6,6 +6,7 @@ import Login from './views/Login.vue'
 import Register from './views/Register.vue'
 import Contact from './views/Contact'
 import EditProfile from './views/EditProfile'
+import AddProfile from './views/AddProfile'
 
 Vue.use(Router)
 
@@ -62,6 +63,15 @@ const router = new Router({
         requiresAuth: false
       }
     },
+    {
+      path: "/addprofile",
+      name: "add-profile",
+      component: AddProfile,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    
   ]
 })
 

@@ -25,6 +25,7 @@
         <h2>Tools:</h2>
 
           <router-link to="/editprofile"><button type="button" class="btn btn-primary">Edit Profile</button></router-link>
+          <router-link to="/addprofile"><button type="button" class="btn btn-primary">Add to Profile</button></router-link>
 
         <ul>
           <li>change username</li>
