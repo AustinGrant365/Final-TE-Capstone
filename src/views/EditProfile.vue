@@ -22,7 +22,7 @@
 
         <input type="text" id="username" class="form-control" placeholder="Username" />
         <div class="date-entry">
-          <p class="start">Start Date</p>
+          <label class="start">Start Date</label>
           <p class="end">End Date</p>
           <input type="date" id="start-date" class="form-control" />
           <input type="date" id="end-date" class="form-control" />
@@ -33,7 +33,7 @@
       </div>
       <div class="username grid-area">
         <h3>Edit Username</h3>
-        <input type="text" id="username" class="form-control" placeholder="Username" />
+        <input type="text" id="username" class="form-control" placeholder="Username" v-model="userprofile.username"/>
       </div>
       <div class="username grid-area">
         <h3>Edit Password</h3>
@@ -41,7 +41,7 @@
       </div>
       <div class="bio grid-area">
         <h3>Edit Bio</h3>
-        <textarea rows="3" cols="50" placeholder="Tell us a little about yourself." />
+        <textarea rows="3" cols="50" placeholder="Tell us a little about yourself." v-model="userprofile.bio"/>
       </div>
       </div>
       <div class="button">
@@ -50,6 +50,10 @@
     </form>
     <div class="profiledisplay grid-area">
       <p>View Profile</p>
+      <p>Username: {{ userprofile.username }}</p>
+      <p>Bio: {{ userprofile.bio }}</p>
+      <p></p>
+      <p></p>
     </div>
   </div>
 </template>
@@ -60,10 +64,11 @@ export default {
 
   data() {
     return {
-      image: "default",
-      username: "Chris Day",
-      bio:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+        userprofile: {
+            username: '',
+            bio: ''
+        }
+
     };
     // experience: {
     //     jobtitle: "",
@@ -107,9 +112,29 @@ export default {
 }
 #start-date {
   grid-area: start-date;
+   box-sizing: border-box;
+  display: block;
+  width: 100%;
+  border-width: 1px;
+  border-style: solid;
+  padding: 16px;
+  outline: 0;
+  font-family: inherit;
+  font-size: 0.95em;
+  border-radius: 15px;
 }
 #end-date {
   grid-area: end-date;
+   box-sizing: border-box;
+  display: block;
+  width: 100%;
+  border-width: 1px;
+  border-style: solid;
+  padding: 16px;
+  outline: 0;
+  font-family: inherit;
+  font-size: 0.95em;
+  border-radius: 15px;
 }
 
 .form {
