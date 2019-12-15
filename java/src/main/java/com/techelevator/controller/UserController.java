@@ -14,7 +14,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.techelevator.model.User;
 import com.techelevator.model.UserDAO;
 
-@Controller
+//@Controller
 public class UserController {
 
 	private UserDAO userDAO;

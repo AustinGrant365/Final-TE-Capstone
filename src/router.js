@@ -4,6 +4,9 @@ import auth from './auth'
 import Home from './views/Home.vue'
 import Login from './views/Login.vue'
 import Register from './views/Register.vue'
+import Contact from './views/Contact'
+import EditProfile from './views/EditProfile'
+import AddProfile from './views/AddProfile'
 
 Vue.use(Router)
 
@@ -25,7 +28,7 @@ const router = new Router({
       name: 'home',
       component: Home,
       meta: {
-        requiresAuth: true
+        requiresAuth: false
       }
     },
     {
@@ -44,6 +47,31 @@ const router = new Router({
         requiresAuth: false
       }
     },
+    {
+      path: "/contact",
+      name: "Contact",
+      component: Contact,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: "/editprofile",
+      name: "edit-profile",
+      component: EditProfile,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: "/addprofile",
+      name: "add-profile",
+      component: AddProfile,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    
   ]
 })
 

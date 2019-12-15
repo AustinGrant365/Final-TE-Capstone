@@ -1,87 +1,213 @@
 <template>
-  <div id="register" class="text-center">
-    <form class="form-register" @submit.prevent="register">
-      <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
-      <div class="alert alert-danger" role="alert" v-if="registrationErrors">
-        There were problems registering this user.
-      </div>
-      <label for="username" class="sr-only">Username</label>
-      <input
-        type="text"
-        id="username"
-        class="form-control"
-        placeholder="Username"
-        v-model="user.username"
-        required
-        autofocus
-      />
-      <label for="password" class="sr-only">Password</label>
-      <input
-        type="password"
-        id="password"
-        class="form-control"
-        placeholder="Password"
-        v-model="user.password"
-        required
-      />
-      <input
-        type="password"
-        id="confirmPassword"
-        class="form-control"
-        placeholder="Confirm Password"
-        v-model="user.confirmPassword"
-        required
-      />
-      <router-link :to="{ name: 'login' }">
-        Have an account?
-      </router-link>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">
-        Create Account
-      </button>
-    </form>
+  <div class="register-page">
+    <div class="bg" style="background-image: url('https://www.intechnic.com/hs-fs/hubfs/intechnic_2017/assets/images/landing/footer/map-xl.jpg?width=1680&height=824&name=map-xl.jpg');">
+    <br />
+
+    <div id="register" class="text-center">
+      <form class="form-register" @submit.prevent="register">
+        <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
+        <div class="login-container">
+          <div
+            class="alert alert-danger"
+            role="alert"
+            v-if="registrationErrors"
+          >There were problems registering this user.</div>
+
+          <p>Select account type:</p>
+          <input type="radio" id="student" name="account-type" value="student" />
+          <label for="student">Student</label>
+          <br />
+          <input type="radio" id="employer" name="account-type" value="employer" />
+          <label for="employer">Employer</label>
+
+          <br />
+          <br />
+          <input
+            type="text"
+            id="username"
+            class="form-control"
+            placeholder="Username"
+            v-model="user.username"
+            required
+            autofocus
+          />
+   
+          <br />
+          <input
+            type="password"
+            id="password"
+            class="form-control"
+            placeholder="Password"
+            v-model="user.password"
+            required
+          />
+          <br />
+          <input
+            type="password"
+            id="confirmPassword"
+            class="form-control"
+            placeholder="Confirm Password"
+            v-model="user.confirmPassword"
+            required
+          />
+          <br />
+          <button class="btn btn-lg btn-primary btn-block" type="submit">Create Account</button>
+          <br />
+          <router-link :to="{ name: 'login' }">
+            <small>If you already have an account, click here.</small>
+          </router-link>
+        </div>
+        <br />
+        <br />
+        <br />
+      </form>
+       
+    </div>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'register',
-  components: {
-  
-  },
+  name: "register",
+  components: {},
+
   data() {
     return {
       user: {
-        username: '',
-        password: '',
-        confirmPassword: '',
-        role: 'user',
+        username: "",
+        password: "",
+        confirmPassword: "",
+        role: 5
       },
       registrationErrors: false,
+      homeUrl: "http://localhost:8083"
     };
   },
   methods: {
     register() {
-      fetch(`${process.env.VUE_APP_REMOTE_API}/register`, {
-        method: 'POST',
+      //fetch(`${process.env.VUE_APP_REMOTE_API}/register`, {
+      fetch(`${this.homeUrl}/register`, {
+        method: "POST",
         headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
+          Accept: "application/json",
+          "Content-Type": "application/json"
         },
-        body: JSON.stringify(this.user),
+        body: JSON.stringify(this.user)
       })
-        .then((response) => {
+        .then(response => {
+          console.log(response.json());
           if (response.ok) {
-            this.$router.push({ path: '/login', query: { registration: 'success' } });
+            this.$router.push({
+              path: "/login",
+              query: { registration: "success" }
+            });
           } else {
             this.registrationErrors = true;
           }
         })
-
-        .then((err) => console.error(err));
-    },
-  },
+        .then(err => console.error(err));
+    }
+  }
 };
 </script>
 
 <style>
-</style>
+.login-page {
+  text-align: center;
+}
+
+.text-center {
+  display: inline-block;
+  width: 100%;
+}
+
+.form-register {
+  display: inline-block;
+  width: 30%;
+}
+
+.login-container {
+  background: #ebebeb;
+  padding: 12px;
+  border-radius: 15px;
+  text-align: center;
+  width: 100%;
+}
+
+input {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  border-width: 1px;
+  border-style: solid;
+  padding: 16px;
+  outline: 0;
+  font-family: inherit;
+  font-size: 0.95em;
+  border-radius: 15px;
+}
+
+button[type="submit"] {
+  background: #28d;
+  border-color: transparent;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 15px;
+}
+
+input[type="text"] {
+  border-radius: 15px;
+}
+
+input[type="password"] {
+  border-radius: 15px;
+}
+
+button[type="submit"]:hover {
+  background: #17c;
+}
+
+/* Buttons' focus effect */
+button[type="submit"]:focus {
+  border-color: #05a;
+}
+
+.form-register label {
+  display: inline-block;
+  width: 200px;
+  padding: 10px;
+  border: solid 2px #ccc;
+  transition: all 0.3;
+  width: 100%;
+  text-align: center;
+  border-radius: 15px;
+  margin: 8px;
+}
+
+.form-register input[type="radio"] {
+  display: none;
+  width: 100%;
+}
+
+.form-register input[type="radio"]:checked + label {
+  border: solid 2px #17c;
+  width: 100%;
+}
+
+/* #register {
+  display: inline-block;
+  width: 100%;
+
+} */
+
+/* .register-parent {
+  text-align: center;
+} */
+
+h1 {
+  color: white;
+}
+
+
+</style> 
