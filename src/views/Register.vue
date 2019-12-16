@@ -51,7 +51,9 @@
             required
           />
           <br />
+          <router-link to="/addprofile">
           <button class="btn btn-lg btn-primary btn-block" type="submit">Create Account</button>
+          </router-link>
           <br />
           <router-link :to="{ name: 'login' }">
             <small>If you already have an account, click here.</small>
