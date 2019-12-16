@@ -1,55 +1,144 @@
 <template>
   <div class="grid-container">
     <form class="form grid-area">
-      
       <div class="experience grid-area">
         <h3>Add Job Experience</h3>
 
-        <input type="text" id="username" class="form-control" placeholder="Username" />
+        <input
+          type="text"
+          id="username"
+          class="form-control"
+          placeholder="Institution"
+          v-model="experience.institution"
+        />
+        <input
+          type="text"
+          id="username"
+          class="form-control"
+          placeholder="Job Title"
+          v-model="experience.jobtitle"
+        />
+        <textarea
+            rows="2"
+            cols="50"
+            placeholder="Responsibilities"
+            v-model="experience.res"
+          />
         <div class="date-entry">
-          <p class="start">Start Date</p>
-          <p class="end">End Date</p>
-          <input type="date" id="start-date" class="form-control" />
-          <input type="date" id="end-date" class="form-control" />
+          <label class="start">
+            Start Date
+            <input
+              type="date"
+              id="start-date"
+              class="form-control"
+              v-model="experience.startdate"
+            />
+          </label>
+          <label class="end">
+            End Date
+            <input
+              type="date"
+              id="end-date"
+              class="form-control"
+              v-model="experience.enddate"
+            />
+          </label>
         </div>
         <div class="button">
-            <br>
-        <button type="submit">Add Experience</button>
+          <br />
+          <button type="submit">Add Experience</button>
+        </div>
       </div>
-      </div>
+
+      <!-- <div  v-if="showXP1 === true" class="experience grid-area">
+        <h3>Add Job Experience</h3>
+        <input type="text" id="username" class="form-control" placeholder="Username" />
+        <div class="date-entry">
+          <label class="start">
+            Start Date
+            <input type="date" id="start-date" class="form-control" />
+          </label>
+          <label class="end">
+            End Date
+            <input type="date" id="end-date" class="form-control" />
+          </label>
+        </div>
+        <div class="button">
+          <br />
+          <button type="submit">Add Experience</button>
+        </div>
+      </div>-->
+
       <div class="education grid-area">
         <h3>Add Education</h3>
 
-        <input type="text" id="username" class="form-control" placeholder="Username" />
+        <input
+          type="text"
+          id="username"
+          class="form-control"
+          placeholder="School"
+          v-model="education.school"
+        />
         <div class="date-entry">
-          <p class="start">Start Date</p>
-          <p class="end">End Date</p>
-          <input type="date" id="start-date" class="form-control" />
-          <input type="date" id="end-date" class="form-control" />
+          <label class="start">
+            Start Date
+            <input type="date" id="start-date" class="form-control" />
+          </label>
+          <label class="end">
+            End Date
+            <input type="date" id="end-date" class="form-control" />
+          </label>
         </div>
         <div class="button">
-            <br>
-        <button type="submit">Add Education</button>
+          <br />
+          <button type="submit">Add Education</button>
+        </div>
       </div>
-      <div class="username grid-area">
-        <h3>Edit Username</h3>
-        <input type="text" id="username" class="form-control" placeholder="Username" />
-      </div>
-      <div class="username grid-area">
-        <h3>Edit Password</h3>
-        <input type="password" id="username" class="form-control" placeholder="Password" />
-      </div>
-      <div class="bio grid-area">
-        <h3>Edit Bio</h3>
-        <textarea rows="3" cols="50" placeholder="Tell us a little about yourself." />
-      </div>
-      </div>
-      <div class="button">
-        <button type="submit">Save Changes</button>
+      <div class="account">
+        <div class="bio grid-area">
+          <h3>Edit Bio</h3>
+          <textarea
+            rows="3"
+            cols="50"
+            placeholder="Tell us a little about yourself."
+            v-model="userprofile.bio"
+          />
+        </div>
+        <div class="username grid-area">
+          <h3>Edit Username</h3>
+          <input
+            type="text"
+            id="username"
+            class="form-control"
+            placeholder="Username"
+            v-model="userprofile.username"
+          />
+        </div>
+
+        <div class="username grid-area">
+          <h3>Edit Password</h3>
+          <input type="password" id="username" class="form-control" placeholder="Password" />
+        </div>
+
+        <div class="button">
+          <button type="submit">Save Changes</button>
+        </div>
       </div>
     </form>
     <div class="profiledisplay grid-area">
       <p>View Profile</p>
+      <p>Username: {{ userprofile.username }}</p>
+      <p>Bio: {{ userprofile.bio }}</p>
+      <p>Education: {{ education.school}} {{ education.school}} {{ education.school}}</p>
+      <p>Experience {{ experience.jobtitle}} {{ experience.jobtitle}} {{ experience.jobtitle}}</p>
+
+      <div class="experience" v-for="jobs in experience" v-bind:key="jobs.id">
+        <h4>{{ jobs.jobtitle }}</h4>
+
+        <h3>{{ jobs.startdate }}</h3>
+
+        <p>{{ jobs.enddate }}</p>
+      </div>
     </div>
   </div>
 </template>
@@ -57,25 +146,30 @@
 <script>
 export default {
   name: "home",
-
+  showXP1: false,
   data() {
     return {
-      image: "default",
-      username: "Chris Day",
-      bio:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+      userprofile: {
+        username: "",
+        bio: ""
+      },
+      experience: [
+        {
+          jobtitle: "",
+          startdate: "",
+          enddate: ""
+        }
+      ],
+      education: [
+        {
+          school: "",
+          startdate: "",
+          enddate: ""
+        }
+      ]
     };
-    // experience: {
-    //     jobtitle: "",
-    //     startdate: "",
-    //     enddate: "",
-    // };
-    // education: {
-    //     school: "",
-    //     startdate: "",
-    //     enddate: ""
-    // };
-  }
+  },
+  methods: {}
 };
 </script>
 
@@ -92,11 +186,11 @@ export default {
 
 .date-entry {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-areas:
-    "start end"
-    "start-date end-date";
-  grid-gap: 0px;
+    ". start end ."
+    ". start-date end-date .";
+  grid-gap: 10px;
 }
 
 .start {
@@ -107,17 +201,37 @@ export default {
 }
 #start-date {
   grid-area: start-date;
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  border-width: 1px;
+  border-style: solid;
+  padding: 16px;
+  outline: 0;
+  font-family: inherit;
+  font-size: 0.95em;
+  border-radius: 15px;
 }
 #end-date {
   grid-area: end-date;
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  border-width: 1px;
+  border-style: solid;
+  padding: 16px;
+  outline: 0;
+  font-family: inherit;
+  font-size: 0.95em;
+  border-radius: 15px;
 }
 
 .form {
   grid-area: form;
-  background: #ebebeb;
+  /* background: #ebebeb;
   padding: 12px;
   border-radius: 15px;
-  width: 100%;
+  width: 100%; */
 }
 
 textarea {
@@ -135,22 +249,36 @@ textarea {
 
 .bio {
   grid-area: bio;
-  padding: 10px;
 }
 
 .username {
   grid-area: username;
-  padding: 10px;
 }
 
 .education {
   grid-area: education;
-  padding: 10px;
+  background: #ebebeb;
+  padding: 12px;
+  border-radius: 15px;
+  width: 100%;
+  margin: 10px;
+}
+
+.account {
+  background: #ebebeb;
+  padding: 12px;
+  border-radius: 15px;
+  width: 100%;
+  margin: 10px;
 }
 
 .experience {
   grid-area: experience;
-  padding: 10px;
+  background: #ebebeb;
+  padding: 12px;
+  border-radius: 15px;
+  width: 100%;
+  margin: 10px;
 }
 
 .button {
