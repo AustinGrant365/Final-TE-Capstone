@@ -9,6 +9,7 @@
           id="firstname"
           class="form-control"
           placeholder="First Name"
+          v-model="add.firstName"
         />
 
         <input
@@ -16,6 +17,7 @@
           id="lastname"
           class="form-control"
           placeholder="Last Name"
+          v-model="add.lastName"
         />
        
         <input
@@ -23,6 +25,7 @@
           id="email"
           class="form-control"
           placeholder="Email Address"
+          v-model="add.email"
         />
      
         <textarea
@@ -30,6 +33,7 @@
             cols="50"
             class="form-control"
             placeholder="Summary"
+            v-model="add.summary"
           />
 
         <div class="number-entry">
@@ -39,6 +43,7 @@
           id="phonenumber"
           class="form-control"
           placeholder="(xxx)xxx-xxxx"
+          v-model="add.phoneNumber"
           />  
           </label>
           <label >
@@ -47,13 +52,14 @@
               type="date"
               id="birthdate"
               class="form-control"
+              v-model="add.birthday"
             />
           </label>
 
           
           <label >
             Select Cohort
-            <select id="cohort" class="form-control" placeholder="Select Cohort">
+            <select id="cohort" class="form-control" placeholder="Select Cohort" v-model="add.cohort">
   <option value="0">Cohort 0</option>
   <option value="1">Cohort 1</option>
   <option value="2">Cohort 2</option>
@@ -76,12 +82,12 @@ export default {
   data() {
     return {
   add: {
-        firstname: "",
-        lastname: "",
-        emailaddress: "",
+        firstName: "",
+        lastName: "",
+        email: "",
         summary: "",
-        phonenumber: "",
-        birthdate: "",
+        phoneNumber: "",
+        birthday: "",
         cohort: ""
       },
      registrationErrors: false,
@@ -90,6 +96,9 @@ export default {
   },
   
 methods: {
+
+
+
   add() {
       //fetch(`${process.env.VUE_APP_REMOTE_API}/register`, {
         fetch(`${this.homeUrl}/addprofile`, {
@@ -127,6 +136,19 @@ methods: {
     ". add . ";
   grid-gap: 20px;
   text-align: center;
+}
+
+@media only screen and (max-width: 768px) {
+    .grid-container {
+  display: grid;
+  grid-template-columns: 1fr 4fr 1fr;
+  grid-template-areas:
+    ". t . "
+    ". add . ";
+  grid-gap: 20px;
+  text-align: center;
+}
+    
 }
 .add {
   grid-area: add;
