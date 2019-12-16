@@ -1,7 +1,8 @@
 <template>
   <div id="main-container">
     <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #3281a8;">
-      <router-link class="navbar-brand" to="/">Profolio</router-link>
+     
+      <router-link class="navbar-brand" to="/"><img src="../assets/logo2.png" alt="Profolio logo" width="25%"></router-link>
       <button
         class="navbar-toggler"
         type="button"
@@ -16,6 +17,7 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
+          
 
 <li class="nav-item">
             <router-link class="nav-link" to="/login">Login</router-link>
@@ -47,5 +49,18 @@ export default {
 
 <style>
 @import url("https://fonts.googleapis.com/css?family=Acme&display=swap");
+
+.nav-link {
+  text-align: left;
+}
+
+ .logo.grow { 
+transition: all .2s ease-in-out; 
+}
+
+.grow:hover { 
+transform: scale(1.1); 
+}
+
 </style>
 
