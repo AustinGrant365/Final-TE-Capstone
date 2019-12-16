@@ -28,9 +28,8 @@ public class User {
     
     @Size(min = 10, message = "Password too short, must be at least 10 characters.")
     @Pattern.List({
-                          @Pattern(regexp = "(.*[a-z]*.)", message = "Password must contain one lowercase letter."),
-                          @Pattern(regexp = "(.*[A-Z]*.)", message = "Password must contain one uppercase letter."),
-
+    	@Pattern(regexp = "(.*[A-Z]*.)", message = "Password must contain one uppercase letter."),                  
+    	// @Pattern(regexp = "(.*[a-z]*.)", message = "Password must contain one lowercase letter.")
                   })
     @Column(name = "password", updatable = true, nullable = false)
     private String password;
