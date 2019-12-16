@@ -228,10 +228,6 @@ export default {
 
 .form {
   grid-area: form;
-  /* background: #ebebeb;
-  padding: 12px;
-  border-radius: 15px;
-  width: 100%; */
 }
 
 textarea {
