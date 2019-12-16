@@ -3,7 +3,7 @@
         <h3 class="title grid-area">Tell us a bit about yourself </h3>
     <div class="add grid-area">
 
-      <form class="form-add-profile" @submit.prevent="register">
+      <form class="form-add-profile" @submit.prevent="add">
         <input
           type="text"
           id="firstname"
@@ -72,31 +72,42 @@
 
 <script>
 export default {
+  add: {
+        firstname: "",
+        lastname: "",
+        emailaddress: "",
+        summary: "",
+        phonenumber: "",
+        birthdate: "",
+        cohort: ""
+      },
   
-};
-    register() {
-      //fetch(`${process.env.VUE_APP_REMOTE_API}/register`, {
-      fetch(`${this.homeUrl}/register`, {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(this.user)
-      })
-        .then(response => {
-          console.log(response.json());
-          if (response.ok) {
-            this.$router.push({
-              path: "/login",
-              query: { registration: "success" }
-            });
-          } else {
-            this.registrationErrors = true;
-          }
-        })
-        .then(err => console.error(err));
+method: {
+  // add() {
+    //   //fetch(`${process.env.VUE_APP_REMOTE_API}/register`, {
+      //   fetch(`${this.homeUrl}/register`, {
+        //     method: "POST",
+    //     headers: {
+      //       Accept: "application/json",
+    //       "Content-Type": "application/json"
+    //     },
+    //     body: JSON.stringify(this.user)
+    //   })
+    //     .then(response => {
+      //       console.log(response.json());
+    //       if (response.ok) {
+      //         this.$router.push({
+        //           path: "/login",
+    //           query: { registration: "success" }
+    //         });
+    //       } else {
+      //         this.registrationErrors = true;
+    //       }
+    //     })
+    //     .then(err => console.error(err));
     }
+}
+
 </script>
 
 <style scoped>
