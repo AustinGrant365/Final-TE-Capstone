@@ -36,7 +36,7 @@ public class UserProfile {
     @Column(name = "birthday", updatable = true, nullable = false)
     private Date birthday;
     
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @MapsId
     private User user;
     
