@@ -29,27 +29,19 @@ public class AccountController {
     @Autowired
     private JwtTokenHandler tokenHandler;
     
-    @RequestMapping(path = "/login", method = RequestMethod.POST, produces = "application/json")
+    @PostMapping(path = "/login", produces = "application/json")
     public String login(@RequestBody User user, RedirectAttributes flash) throws UnauthorizedException {
         if (auth.signIn(user)) {
             User currentUser = auth.getCurrentUser();
-//            System.out.println(user.toString());
-//            System.out.println(currentUser.toString());
             String token = tokenHandler.createToken(user.getUsername(), currentUser.getRole());
-//            System.out.println(token);
             return token;
         } else {
             throw new UnauthorizedException();
         }
     }
     
-    @RequestMapping(path = "/register", method = RequestMethod.POST)
+    @PostMapping(path = "/register")
     public String register(@Valid @RequestBody User user, BindingResult result) throws UserCreationException {
-//        User u = new User();
-//        u.setRole(5);
-//        u.setUsername("someguy");
-//        u.setPassword("greatAssPass");
-//    	return u;
         if (result.hasErrors()) {
             String errorMessages = "";
             for (ObjectError error : result.getAllErrors()) {

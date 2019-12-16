@@ -36,7 +36,9 @@ export default {
 <style scoped>
 .footer-script {
     text-align: center;
+ 
 }
+
 .info{
     display: inline-block;
 }
