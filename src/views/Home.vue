@@ -1,6 +1,6 @@
 <template>
 
-  <div class="grid-container">
+  <div class="grid-container" >
 
     
 
@@ -16,6 +16,7 @@
       <div class="bio grid-area">
         
           <h2>Bio:</h2>
+          
           <p>{{ bio }}</p>
         
       </div>
@@ -77,12 +78,29 @@ export default {
     bio: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
     }
   }
-
-  // methods: {
-  //   getImage(image){
-  //     return "'../assets/' + default.jpg"
-  //   }
-  // }
+    // register() {
+    //   //fetch(`${process.env.VUE_APP_REMOTE_API}/register`, {
+    //   fetch(`${this.homeUrl}/register`, {
+    //     method: "POST",
+    //     headers: {
+    //       Accept: "application/json",
+    //       "Content-Type": "application/json"
+    //     },
+    //     body: JSON.stringify(this.user)
+    //   })
+    //     .then(response => {
+    //       console.log(response.json());
+    //       if (response.ok) {
+    //         this.$router.push({
+    //           path: "/login",
+    //           query: { registration: "success" }
+    //         });
+    //       } else {
+    //         this.registrationErrors = true;
+    //       }
+    //     })
+    //     .then(err => console.error(err));
+    // }
 
  
 };

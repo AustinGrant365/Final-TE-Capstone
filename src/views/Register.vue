@@ -14,10 +14,10 @@
           >There were problems registering this user.</div>
 
           <p>Select account type:</p>
-          <input type="radio" id="student" name="account-type" value="student" />
+          <input type="radio" id="student" name="account-type" value="5" v-model="user.role"/>
           <label for="student">Student</label>
           <br />
-          <input type="radio" id="employer" name="account-type" value="employer" />
+          <input type="radio" id="employer" name="account-type" value="2" v-model="user.role" />
           <label for="employer">Employer</label>
 
           <br />
@@ -78,7 +78,7 @@ export default {
         username: "",
         password: "",
         confirmPassword: "",
-        role: 5
+        role: ""
       },
       registrationErrors: false,
       homeUrl: "http://localhost:8083"

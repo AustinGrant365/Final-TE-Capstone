@@ -28,7 +28,7 @@ const router = new Router({
       name: 'home',
       component: Home,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
     {
@@ -60,7 +60,7 @@ const router = new Router({
       name: "edit-profile",
       component: EditProfile,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
     {
@@ -68,7 +68,7 @@ const router = new Router({
       name: "add-profile",
       component: AddProfile,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
     
