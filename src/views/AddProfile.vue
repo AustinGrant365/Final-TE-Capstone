@@ -72,6 +72,9 @@
 
 <script>
 export default {
+
+  data() {
+    return {
   add: {
         firstname: "",
         lastname: "",
@@ -81,33 +84,37 @@ export default {
         birthdate: "",
         cohort: ""
       },
+     registrationErrors: false,
+      homeUrl: "http://localhost:8083"
+  };
+  },
   
-method: {
-  // add() {
-    //   //fetch(`${process.env.VUE_APP_REMOTE_API}/register`, {
-      //   fetch(`${this.homeUrl}/register`, {
-        //     method: "POST",
-    //     headers: {
-      //       Accept: "application/json",
-    //       "Content-Type": "application/json"
-    //     },
-    //     body: JSON.stringify(this.user)
-    //   })
-    //     .then(response => {
-      //       console.log(response.json());
-    //       if (response.ok) {
-      //         this.$router.push({
-        //           path: "/login",
-    //           query: { registration: "success" }
-    //         });
-    //       } else {
-      //         this.registrationErrors = true;
-    //       }
-    //     })
-    //     .then(err => console.error(err));
+methods: {
+  add() {
+      //fetch(`${process.env.VUE_APP_REMOTE_API}/register`, {
+        fetch(`${this.homeUrl}/addprofile`, {
+            method: "POST",
+        headers: {
+            Accept: "application/json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(this.user)
+      })
+        .then(response => {
+            console.log(response.json());
+          if (response.ok) {
+              this.$router.push({
+                  path: "/login",
+              query: { registration: "success" }
+            });
+          } else {
+              this.registrationErrors = true;
+          }
+        })
+        .then(err => console.error(err));
     }
 }
-
+}
 </script>
 
 <style scoped>
