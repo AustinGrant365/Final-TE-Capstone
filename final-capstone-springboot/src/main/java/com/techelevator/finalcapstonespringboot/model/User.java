@@ -32,6 +32,7 @@ public class User {
                           @Pattern(regexp = "(.*[A-Z]*.)", message = "Password must contain one uppercase letter."),
 
                   })
+
     @Column(name = "password", updatable = true, nullable = false)
     private String password;
     
