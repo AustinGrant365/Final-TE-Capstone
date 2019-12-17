@@ -22,6 +22,7 @@
             >Thank you for registering, please sign in.</div>
 
             <p>Log in to your Profolio</p>
+            <div class="testcenter">
             <input
               type="text"
               id="username"
@@ -35,14 +36,14 @@
             <label for="password" class="sr-only">
               <br />
             </label>
-            <input
+           <input
               type="password"
               id="password"
               class="form-control"
               placeholder="Password"
               v-model="user.password"
               required
-            />
+            /></div>
 
             <br />
             <button class="hvr-back-pulse" type="submit">Sign in</button>
@@ -205,4 +206,9 @@ h2 {
   background-color: #2098d1;
   color: white;
 }
+
+.testcenter {
+  padding-right: 20px; 
+}
+
 </style>
