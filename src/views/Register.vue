@@ -1,6 +1,5 @@
 <template>
   <div class="register-page">
-    <div class="bg" style="background-image: url('https://www.intechnic.com/hs-fs/hubfs/intechnic_2017/assets/images/landing/footer/map-xl.jpg?width=1680&height=824&name=map-xl.jpg');">
     <br />
 
     <div id="register" class="text-center">
@@ -14,10 +13,10 @@
           >There were problems registering this user.</div>
 
           <p>Select account type:</p>
-          <input type="radio" id="student" name="account-type" value="5" v-model="user.role"/>
+          <input type="radio" id="student" name="account-type" v-model="user.role" value="5" />
           <label for="student">Student</label>
           <br />
-          <input type="radio" id="employer" name="account-type" value="2" v-model="user.role" />
+          <input type="radio" id="employer" name="account-type" v-model="user.role" value="2" />
           <label for="employer">Employer</label>
 
           <br />
@@ -31,7 +30,6 @@
             required
             autofocus
           />
-   
           <br />
           <input
             type="password"
@@ -51,9 +49,7 @@
             required
           />
           <br />
-          <router-link to="/addprofile">
           <button class="btn btn-lg btn-primary btn-block" type="submit">Create Account</button>
-          </router-link>
           <br />
           <router-link :to="{ name: 'login' }">
             <small>If you already have an account, click here.</small>
@@ -63,8 +59,6 @@
         <br />
         <br />
       </form>
-       
-    </div>
     </div>
   </div>
 </template>
@@ -88,6 +82,7 @@ export default {
   },
   methods: {
     register() {
+      console.log(process.env.BASE_URL);
       //fetch(`${process.env.VUE_APP_REMOTE_API}/register`, {
       fetch(`${this.homeUrl}/register`, {
         method: "POST",
@@ -206,10 +201,4 @@ button[type="submit"]:focus {
 /* .register-parent {
   text-align: center;
 } */
-
-h1 {
-  color: white;
-}
-
-
 </style> 
