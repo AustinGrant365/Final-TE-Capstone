@@ -17,7 +17,7 @@
         <div class="navbar-nav">
           <a href="/login" class="nav-item grow nav-link active"><font color="white"><strong>Login</strong></font></a>
           <a href="/register" class="nav-item grow nav-link"><font color="white"><strong>Register</strong></font></a>
-          <a href="/about" class="nav-item grow nav-link"><font color="white"><strong>About</strong></font></a>
+          <a href="/about" class="nav-item grow nav-link"><img class="info" src="../assets/infoi.jpg" alt="information"></a>
         </div>
         <form class="form-inline">
           <div class="input-group">
@@ -65,6 +65,8 @@ img {
 }
 
 
-
+.info {
+  width: 20px;
+}
 
 </style>
