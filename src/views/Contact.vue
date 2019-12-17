@@ -1,38 +1,39 @@
 <template>
 <div class="contact">
+   <div section id="logo">
     <br>
-    <br>
+    
     <body>
-    <h2>Contact US</h2>
-    <div section id="logo">
-<img src="https://images.squarespace-cdn.com/content/55ef2da9e4b03f6e1ef0cd28/1573837430685-80KGNIB9IVQO3GMY344H/Stacked+logo_white+behind+the+mark.png?content-type=image%2Fpng">
-    </div>
-    <br>
-    <p>Thank you for visiting our site.<br>
+   <center><h3><u>Contact Us</u></h3></center>
+   <br><br>
+<center><img src="https://images.squarespace-cdn.com/content/55ef2da9e4b03f6e1ef0cd28/1573837430685-80KGNIB9IVQO3GMY344H/Stacked+logo_white+behind+the+mark.png?content-type=image%2Fpng"></center>
+<br>
+   <center> <p>Thank you for visiting our site.<br>
     You may contact us with the following information:
-    </p>
+    </p></center>
     <br>
    
 
 
     <div class="contactus">
-    <p><strong>Tech Elevator</strong><br>
+    <center><p><strong>Tech Elevator</strong><br>
     Email: <i>Hello@techelevator.com</i><br>
     Phone: <i>877.606.3203</i>
-    </p>
+    </p></center>
     </div>
-    <br>
+    
     <div section id="link1">
-        <p>To learn more about Tech Elevator, <a href="http://techelevator.com/">click here.</a></p>
+       <center> <p>To learn more about Tech Elevator, <a href="http://techelevator.com/">click here.</a></p></center>
     </div>
    <section id="info2">
-<button id="alert" v-on:click="myFunction()"><img src="http://cdn.onlinewebfonts.com/svg/img_519962.png" height="22" width="22"/></button>
+<center><button class="b2" id="alert" v-on:click="myFunction()"><img src="http://cdn.onlinewebfonts.com/svg/img_519962.png" height="22" width="22"/></button></center>
 
    </section>
-    <br>
+  
     <hr>
 
     </body>
+    </div>
 </div>
 </template>
 
@@ -51,6 +52,18 @@ export default {
 
 img {
     width: 25%;
+   
+}
+ h3 {
+     color: gray;
+ }
+
+.b2 {
+    
+    border-radius: 100%;
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+    width: 6%;
 }
 
 </style>

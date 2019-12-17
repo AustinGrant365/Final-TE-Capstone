@@ -1,5 +1,7 @@
 <template>
-  <div class="grid-container">
+  <div class="grid-container"
+   style="background-image: url('https://www.intechnic.com/hs-fs/hubfs/intechnic_2017/assets/images/landing/footer/map-xl.jpg?width=1680&height=824&name=map-xl.jpg');"
+  >
     <form class="form grid-area">
       <div class="experience grid-area">
         <h3>Add Job Experience</h3>
@@ -49,25 +51,6 @@
           <button type="submit">Add Experience</button>
         </div>
       </div>
-
-      <!-- <div  v-if="showXP1 === true" class="experience grid-area">
-        <h3>Add Job Experience</h3>
-        <input type="text" id="username" class="form-control" placeholder="Username" />
-        <div class="date-entry">
-          <label class="start">
-            Start Date
-            <input type="date" id="start-date" class="form-control" />
-          </label>
-          <label class="end">
-            End Date
-            <input type="date" id="end-date" class="form-control" />
-          </label>
-        </div>
-        <div class="button">
-          <br />
-          <button type="submit">Add Experience</button>
-        </div>
-      </div>-->
 
       <div class="education grid-area">
         <h3>Add Education</h3>
@@ -125,7 +108,7 @@
         </div>
       </div>
     </form>
-    <div class="profiledisplay grid-area">
+    <!-- <div class="profiledisplay grid-area">
       <p>View Profile</p>
       <p>Username: {{ userprofile.username }}</p>
       <p>Bio: {{ userprofile.bio }}</p>
@@ -139,7 +122,7 @@
 
         <p>{{ jobs.enddate }}</p>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 

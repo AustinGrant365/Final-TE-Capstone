@@ -2,7 +2,7 @@
   <div id="main-container">
     <nav class="navbar navbar-expand-md navbar-light bg-light">
       <router-link class="navbar-brand" to="/">
-        <img class="logo grow" src="../assets/logo2.png" alt="Profolio logo" />
+        <img class="logo hvr-pulse" src="../assets/logo2.png" alt="Profolio logo" />
       </router-link>
       <button
         type="button"
@@ -15,30 +15,30 @@
 
       <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
         <div class="navbar-nav">
-          <a href="/login" class="nav-item grow nav-link active">
+          <a href="/login" class="nav-item hvr-pulse nav-link active">
             <font color="white">
               <strong>Login</strong>
             </font>
           </a>
-          <a href="/register" class="nav-item grow nav-link">
+          <a href="/register" class="nav-item hvr-pulse nav-link">
             <font color="white">
               <strong>Register</strong>
             </font>
           </a>
-          <a href="/about" class="nav-item grow nav-link">
+          <a href="/about" class="nav-item hvr-pulse nav-link">
             <img class="info" src="../assets/infoi.png" alt="information" />
           </a>
         </div>
         <form class="form-inline">
-          <div class="input-group">
-            <input type="text" class="form-control" placeholder="What are you looking for?" />
+            <input type="text" id="search" class="s1 form-control" placeholder="What are you looking for?" />
             <div class="input-group-append">
+              <router-link to="/searchlanding">
               <button type="button" class="btn btn-secondary hvr-pulse">
                 <img class="search" src="../assets/search.jpg" />
                 <i class="fa fa-search"></i>
               </button>
+              </router-link>
             </div>
-          </div>
         </form>
       </div>
     </nav>
@@ -128,4 +128,17 @@ img {
   animation-iteration-count: infinite;
    background-color: rgba(0, 0, 0, 0);
 }
+
+
+.s1 {
+  background-color: #dbdbdb;
+  border: none;
+  
+  
+}
+
+.s1:hover {
+  background-color: white;
+}
+
 </style>
