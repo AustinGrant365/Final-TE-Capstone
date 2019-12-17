@@ -16,6 +16,9 @@ This site was create as a final capstone for Tech Elevator school of software de
 Thank you for visiting.  
     </p>
 
+    <br><br>
+    <center><a href="/"><div class="return1 hvr-bounce-in"><img src="../assets/return1.png" width="160px"></div></a></center>
+
 <hr>
     </body>
     </div>
@@ -42,4 +45,23 @@ p {
     text-align: center;
 }
 
+
+
+/* Bounce In */
+.hvr-bounce-in {
+   
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(4px) translateZ(0);
+  transform: perspective(4px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+}
+.hvr-bounce-in:hover, .hvr-bounce-in:focus, .hvr-bounce-in:active {
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+  -webkit-transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
+  transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
+}
 </style>
