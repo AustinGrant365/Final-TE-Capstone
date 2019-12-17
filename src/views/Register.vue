@@ -12,7 +12,7 @@
             v-if="registrationErrors"
           >There were problems registering this user.</div>
 
-          <p>Select account type:</p>
+          <p><u>Select account type:</u></p>
           <input type="radio" id="student" name="account-type" v-model="user.role" value="5" />
           <label for="student">Student</label>
           <br />
@@ -39,7 +39,7 @@
             v-model="user.password"
             required
           />
-          <br />
+          
           <input
             type="password"
             id="confirmPassword"
@@ -49,7 +49,7 @@
             required
           />
           <br />
-          <button class="btn btn-lg btn-primary btn-block" type="submit">Create Account</button>
+          <button class="btn btn-lg btn-primary btn-block hvr-back-pulse" type="submit">Create Account</button>
           <br />
           <router-link :to="{ name: 'login' }">
             <small>If you already have an account, click here.</small>
@@ -160,7 +160,7 @@ input[type="password"] {
   border-radius: 15px;
 }
 
-button[type="submit"]:hover {
+button[type="submit"]:hover {   
   background: #17c;
 }
 
@@ -200,4 +200,44 @@ button[type="submit"]:focus {
 /* .register-parent {
   text-align: center;
 } */
+
+/* Back Pulse */
+@-webkit-keyframes hvr-back-pulse {
+  50% {
+    background-color: rgba(32, 152, 209, 0.75);
+  }
+}
+@keyframes hvr-back-pulse {
+  50% {
+    background-color: rgba(32, 152, 209, 0.75);
+  }
+}
+.hvr-back-pulse {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  overflow: hidden;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -webkit-transition-property: color, background-color;
+  transition-property: color, background-color;
+}
+.hvr-back-pulse:hover, .hvr-back-pulse:focus, .hvr-back-pulse:active {
+  -webkit-animation-name: hvr-back-pulse;
+  animation-name: hvr-back-pulse;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-delay: 0.5s;
+  animation-delay: 0.5s;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  background-color: #2098D1;
+  background-color: #2098d1;
+  color: white;
+}
+
 </style> 

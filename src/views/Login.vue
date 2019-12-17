@@ -22,6 +22,7 @@
             >Thank you for registering, please sign in.</div>
 
             <p>Log in to your Profolio</p>
+            <div class="testcenter">
             <input
               type="text"
               id="username"
@@ -35,17 +36,17 @@
             <label for="password" class="sr-only">
               <br />
             </label>
-            <input
+           <input
               type="password"
               id="password"
               class="form-control"
               placeholder="Password"
               v-model="user.password"
               required
-            />
+            /></div>
 
             <br />
-            <button type="submit">Sign in</button>
+            <button class="hvr-back-pulse" type="submit">Sign in</button>
             <br />
             <router-link to="/register">Need an account?</router-link>
           </div>
@@ -146,12 +147,13 @@ export default {
   border-color: transparent;
   color: #fff;
   cursor: pointer;
-  width: 100%;
+  width: 75%;
   border-radius: 15px;
 }
 
 #login button[type="submit"]:hover {
   background: #17c;
+  
 }
 
 #login button[type="submit"]:focus {
@@ -162,4 +164,51 @@ h2 {
   margin: auto;
   color: white;
 }
+
+
+
+
+/* Back Pulse */
+@-webkit-keyframes hvr-back-pulse {
+  50% {
+    background-color: rgba(32, 152, 209, 0.75);
+  }
+}
+@keyframes hvr-back-pulse {
+  50% {
+    background-color: rgba(32, 152, 209, 0.75);
+  }
+}
+.hvr-back-pulse {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  overflow: hidden;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -webkit-transition-property: color, background-color;
+  transition-property: color, background-color;
+}
+.hvr-back-pulse:hover, .hvr-back-pulse:focus, .hvr-back-pulse:active {
+  -webkit-animation-name: hvr-back-pulse;
+  animation-name: hvr-back-pulse;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-delay: 0.5s;
+  animation-delay: 0.5s;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  background-color: #2098D1;
+  background-color: #2098d1;
+  color: white;
+}
+
+.testcenter {
+  padding-right: 20px; 
+}
+
 </style>
