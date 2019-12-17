@@ -1,57 +1,59 @@
 <template>
   <div class="login-page">
-    <div style="background-image: url('https://www.intechnic.com/hs-fs/hubfs/intechnic_2017/assets/images/landing/footer/map-xl.jpg?width=1680&height=824&name=map-xl.jpg');">
-    <br />
+    <div
+      style="background-image: url('https://www.intechnic.com/hs-fs/hubfs/intechnic_2017/assets/images/landing/footer/map-xl.jpg?width=1680&height=824&name=map-xl.jpg');"
+    >
+      <br />
 
-    <div id="login" class="text-center">
-       <h2 class="login-header">Welcome.</h2>
-<br>
-      <form class="form-signin" @submit.prevent="login">
-        <div id="login-container" class="text-center">
-          <div
-            class="alert alert-danger"
-            role="alert"
-            v-if="invalidCredentials"
-          >Invalid username and password!</div>
-          <div
-            class="alert alert-success"
-            role="alert"
-            v-if="this.$route.query.registration"
-          >Thank you for registering, please sign in.</div>
+      <div id="login" class="text-center">
+        <h2 class="login-header">Welcome.</h2>
+        <br />
+        <form class="form-signin" @submit.prevent="login">
+          <div id="login-container" class="text-center">
+            <div
+              class="alert alert-danger"
+              role="alert"
+              v-if="invalidCredentials"
+            >Invalid username and password!</div>
+            <div
+              class="alert alert-success"
+              role="alert"
+              v-if="this.$route.query.registration"
+            >Thank you for registering, please sign in.</div>
 
-          <p>Log in to your Profolio</p>
-          <input
-            type="text"
-            id="username"
-            class="form-control"
-            placeholder="Username"
-            v-model="user.username"
-            required
-            autofocus
-          />
-          <br />
-          <label for="password" class="sr-only">
+            <p>Log in to your Profolio</p>
+            <input
+              type="text"
+              id="username"
+              class="form-control"
+              placeholder="Username"
+              v-model="user.username"
+              required
+              autofocus
+            />
             <br />
-          </label>
-          <input
-            type="password"
-            id="password"
-            class="form-control"
-            placeholder="Password"
-            v-model="user.password"
-            required
-          />
+            <label for="password" class="sr-only">
+              <br />
+            </label>
+            <input
+              type="password"
+              id="password"
+              class="form-control"
+              placeholder="Password"
+              v-model="user.password"
+              required
+            />
 
-          <br />
-          <button type="submit">Sign in</button>
-          <br />
-          <router-link to="/register">Need an account?</router-link>
-        </div>
-      </form>
-      <br />
-      <br />
-      <br />
-    </div>
+            <br />
+            <button type="submit">Sign in</button>
+            <br />
+            <router-link to="/register">Need an account?</router-link>
+          </div>
+        </form>
+        <br />
+        <br />
+        <br />
+      </div>
     </div>
   </div>
 </template>
@@ -85,9 +87,7 @@ export default {
         body: JSON.stringify(this.user)
       })
         .then(response => {
-          console.log(JSON.stringify(response));
           if (response.ok) {
-            console.log(JSON.stringify(response.toString()));
             return response.text();
           } else {
             this.invalidCredentials = true;
@@ -100,6 +100,7 @@ export default {
               token = token.replace(/"/g, "");
             }
             auth.saveToken(token);
+            console.log(auth.getUser());
             this.$router.push("/");
           }
         })
@@ -157,7 +158,7 @@ export default {
 }
 
 h2 {
-        margin: auto;
-        color: white;
+  margin: auto;
+  color: white;
 }
 </style>
