@@ -31,7 +31,7 @@
               required
               autofocus
             />
-            <br />
+            
             <label for="password" class="sr-only">
               <br />
             </label>
@@ -131,6 +131,7 @@ export default {
   font-family: inherit;
   font-size: 0.95em;
   border-radius: 15px;
+  
 }
 
 #login-container {
