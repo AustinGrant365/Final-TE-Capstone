@@ -160,7 +160,7 @@ input[type="password"] {
   border-radius: 15px;
 }
 
-button[type="submit"]:hover {
+button[type="submit"]:hover {   
   background: #17c;
 }
 

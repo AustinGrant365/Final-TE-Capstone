@@ -30,7 +30,7 @@
           </a>
         </div>
         <form class="form-inline">
-            <input type="text" id="search" class="form-control" placeholder="What are you looking for?" />
+            <input type="text" id="search" class="s1 form-control" placeholder="What are you looking for?" />
             <div class="input-group-append">
               <button type="button" class="btn btn-secondary hvr-pulse">
                 <img class="search" src="../assets/search.jpg" />
@@ -128,7 +128,15 @@ img {
 }
 
 
-/* #search {
-border-radius: 15%;
-} */
+.s1 {
+  background-color: #dbdbdb;
+  border: none;
+  
+  
+}
+
+.s1:hover {
+  background-color: white;
+}
+
 </style>
