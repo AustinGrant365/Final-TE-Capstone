@@ -1,9 +1,12 @@
 package com.techelevator.finalcapstonespringboot.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Pattern;
 import java.util.Date;
+import java.util.Objects;
 
 @Entity(name = "UserProfile")
 @Table(name = "user_profile")
@@ -11,6 +14,9 @@ public class UserProfile {
     
     @Id
     private Long userId;
+    
+    @Column(name = "username", unique = true, nullable = false)
+    private String username;
     
     @Email(message = "Must be a valid email address.")
     @Column(name = "email", updatable = true, nullable = false)
@@ -38,7 +44,24 @@ public class UserProfile {
     
     @OneToOne
     @MapsId
+    @JsonIgnore
     private User user;
+    
+    public User getUser() {
+        return user;
+    }
+    
+    public void setUser(User user) {
+        this.user = user;
+    }
+    
+    public String getUsername() {
+        return username;
+    }
+    
+    public void setUsername(String username) {
+        this.username = username;
+    }
     
     public Long getUserId() {
         return userId;
@@ -104,5 +127,51 @@ public class UserProfile {
         this.birthday = birthday;
     }
     
+    public void setAllFields(UserProfile userProfile) {
+        this.setFirstName(userProfile.getFirstName());
+        this.setLastName((userProfile.getLastName()));
+        this.setEmail(userProfile.getEmail());
+        this.setBirthday(userProfile.getBirthday());
+        this.setPhoneNumber(userProfile.getPhoneNumber());
+        this.setCohort(userProfile.getCohort());
+        this.setSummary(userProfile.getSummary());
+        this.setUsername(userProfile.getUsername());
+    }
     
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        UserProfile that = (UserProfile) o;
+        return Objects.equals(getUserId(), that.getUserId()) &&
+               Objects.equals(username, that.username) &&
+               Objects.equals(getEmail(), that.getEmail()) &&
+               Objects.equals(getFirstName(), that.getFirstName()) &&
+               Objects.equals(getLastName(), that.getLastName()) &&
+               Objects.equals(getPhoneNumber(), that.getPhoneNumber()) &&
+               Objects.equals(getSummary(), that.getSummary()) &&
+               Objects.equals(getCohort(), that.getCohort()) &&
+               Objects.equals(getBirthday(), that.getBirthday()) &&
+               Objects.equals(getUser(), that.getUser());
+    }
+    
+    @Override
+    public int hashCode() {
+        return Objects.hash(getUserId(), username, getEmail(), getFirstName(), getLastName(), getPhoneNumber(), getSummary(), getCohort(), getBirthday(), getUser());
+    }
+    
+    @Override
+    public String toString() {
+        return "UserProfile{" +
+               "userId=" + userId +
+               ", username='" + username + '\'' +
+               ", email='" + email + '\'' +
+               ", firstName='" + firstName + '\'' +
+               ", lastName='" + lastName + '\'' +
+               ", phoneNumber='" + phoneNumber + '\'' +
+               ", summary='" + summary + '\'' +
+               ", cohort='" + cohort + '\'' +
+               ", birthday=" + birthday +
+               '}';
+    }
 }

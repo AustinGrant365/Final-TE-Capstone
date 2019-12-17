@@ -71,7 +71,7 @@
         </div>
 
         <div class="button">
-          <router-link to="/">
+          <router-link to="/addprofile">
             <button type="submit">Submit Profile</button>
           </router-link>
         </div>
@@ -81,10 +81,12 @@
 </template>
 
 <script>
+import auth from "../auth";
 export default {
   data() {
     return {
       profile: {
+        username: "",
         firstName: "",
         lastName: "",
         email: "",
@@ -93,7 +95,7 @@ export default {
         birthday: "",
         cohort: ""
       },
-      registrationErrors: false,
+      profileSaveErrors: false,
       homeUrl: "http://localhost:8083"
     };
   },
@@ -101,6 +103,9 @@ export default {
   methods: {
     addUserProfile() {
       //fetch(`${process.env.VUE_APP_REMOTE_API}/register`, {
+      //fetch(`${this.homeUrl}/addprofile`, {
+      this.profile.username = auth.getUser().username;
+      console.log(this.profile);
       fetch(`${this.homeUrl}/addprofile`, {
         method: "POST",
         headers: {
@@ -112,12 +117,13 @@ export default {
         .then(response => {
           console.log(response.json());
           if (response.ok) {
+            console.log("response ok");
             this.$router.push({
-              path: "/",
+              path: "/addprofile",
               query: { profileSaved: "success" }
             });
           } else {
-            this.registrationErrors = true;
+            this.profileSaveErrors = true;
           }
         })
         .then(err => console.error(err));
