@@ -8,6 +8,7 @@ import Contact from './views/Contact.vue'
 import EditProfile from './views/EditProfile.vue'
 import AddProfile from './views/AddProfile.vue'
 import About from './views/About.vue'
+import SearchLanding from './views/SearchLanding.vue'
 
 Vue.use(Router)
 
@@ -82,7 +83,14 @@ const router = new Router({
         requiresAuth: true
       }
     },
-    
+    {
+      path: "/searchlanding",
+      name: "search-landing",
+      component: SearchLanding,
+      meta: {
+        requiresAuth: true
+      }
+    },
   ]
 })
 

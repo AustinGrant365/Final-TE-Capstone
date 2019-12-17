@@ -2,7 +2,9 @@
   <div
     class="grid-container"
     style="background-image: url('https://www.intechnic.com/hs-fs/hubfs/intechnic_2017/assets/images/landing/footer/map-xl.jpg?width=1680&height=824&name=map-xl.jpg');"
-  >
+  ><div class="title grid-area">
+  <h3>Your Search Results</h3>
+  </div>
     <div class="resume grid-area">
       <label>
         <h4>Profiles:</h4>
@@ -69,13 +71,17 @@ export default {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-areas:
-    ". . . . . . "
-    ". username bio bio bio ."
+  ". . . . . . "
+    " . title title title title ."
     ". resume resume resume resume ."
-    ". tools tools tools tools ."
-    ". newsfeed newsfeed newsfeed newsfeed .";
+      ". . . . . . "
+;
 
   grid-gap: 20px;
+}
+.title {
+  grid-area: title;
+  color: white;
 }
 .number-entry {
     display: grid;

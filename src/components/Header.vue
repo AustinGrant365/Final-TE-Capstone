@@ -32,10 +32,12 @@
         <form class="form-inline">
             <input type="text" id="search" class="s1 form-control" placeholder="What are you looking for?" />
             <div class="input-group-append">
+              <router-link to="/searchlanding">
               <button type="button" class="btn btn-secondary hvr-pulse">
                 <img class="search" src="../assets/search.jpg" />
                 <i class="fa fa-search"></i>
               </button>
+              </router-link>
             </div>
         </form>
       </div>

@@ -1,5 +1,7 @@
 <template>
-  <div class="register-page">
+  <div class="register-page"
+   style="background-image: url('https://www.intechnic.com/hs-fs/hubfs/intechnic_2017/assets/images/landing/footer/map-xl.jpg?width=1680&height=824&name=map-xl.jpg');"
+  >
     <br />
 
     <div id="register" class="text-center">
@@ -237,6 +239,9 @@ button[type="submit"]:focus {
   animation-iteration-count: infinite;
   background-color: #2098D1;
   background-color: #2098d1;
+  color: white;
+}
+h1 {
   color: white;
 }
 

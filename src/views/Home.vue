@@ -240,6 +240,7 @@ textarea {
   border-width: 1px;
   border-style: solid;
   padding: 16px;
+  
   outline: 0;
   font-family: inherit;
   font-size: 0.95em;
@@ -249,7 +250,9 @@ textarea {
   grid-area: bio;
   padding: 10px;
 }
-
+input{
+  margin-right: 10px;
+}
 .username {
   grid-area: username;
 }
@@ -285,6 +288,7 @@ textarea {
 }
 .portfolio {
   width: 100%;
+  
 }
 
 label {
