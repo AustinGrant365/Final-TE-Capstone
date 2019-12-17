@@ -59,7 +59,7 @@
           
           <label >
             Select Cohort
-            <select id="cohort" class="form-control" placeholder="Select Cohort" v-model="add.cohort">
+            <select id="cohort" class="form-control"  v-model="add.cohort">
   <option value="0">Cohort 0</option>
   <option value="1">Cohort 1</option>
   <option value="2">Cohort 2</option>
@@ -69,7 +69,9 @@
         </div>
          
         <div class="button">
+          <router-link to="/">
           <button type="submit">Submit Profile</button>
+          </router-link>
         </div>
       </form>
       </div>

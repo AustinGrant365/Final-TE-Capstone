@@ -87,6 +87,7 @@ router.beforeEach((to, from, next) => {
     // Else let them go to their next destination
     next();
   }
+
 });
 
 export default router;
