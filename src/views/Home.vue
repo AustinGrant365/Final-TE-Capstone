@@ -17,7 +17,13 @@
         <p class="bio-script">{{ bio }}</p>
       </label>
       <router-link to="/editprofile">
-        <button type="button" class="btn btn-primary">Edit Profile</button>
+        <button type="button" class="btn btn-primary">Edit Resume Information</button>
+      </router-link>
+      <router-link to="/addprofile">
+        <button type="button" class="btn btn-primary">Edit Account Information</button>
+      </router-link>
+      <router-link to="/">
+        <button type="button" class="btn btn-primary">Make Profile Visible</button>
       </router-link>
     </div>
 
@@ -57,15 +63,15 @@
 
         <textarea rows="2" cols="50" class="form-control" placeholder="Description" />
 
-        <div class="number-entry">
+        <div class="number-entry grid-area">
           
           <label>
             Start Date
-            <input type="date" id="birthdate" class="form-control" />
+            <input type="date" id="sd grid-area" class="form-control" />
           </label>
           <label>
             End Date
-            <input type="date" id="birthdate" class="form-control" />
+            <input type="date" id="ed grid area" class="form-control" />
           </label>
         </div>
         <router-link to="/">
@@ -75,18 +81,7 @@
       </label>
     </div>
 
-    <div class="newsfeed grid-area">
-      <h1>newsfeed:</h1>
-
-      <ul>
-        <li>portfolio</li>
-        <li>student profile</li>
-        <li>blog</li>
-        <li>etc</li>
-        <li>advertisement</li>
-        <li>fake news</li>
-      </ul>
-    </div>
+    
   </div>
 </template>
 
@@ -188,7 +183,13 @@ export default {
 
   grid-gap: 20px;
 }
-
+.number-entry {
+    display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "sd ed ";
+  grid-gap: 20px;
+}
 .resume {
   grid-area: resume;
 }
@@ -267,11 +268,11 @@ textarea {
 
 .tools {
   grid-area: tools;
-  border: solid;
+  border: 10px solid;
   border-radius: 15px;
-  border-color: #3281a8;
+  border-color: #eeeded;
   padding: 10px;
-  background-color: #dfdede;
+  background-color: #ffffff;
 }
 
 .default-image {
@@ -285,5 +286,8 @@ textarea {
 
 label {
   width: 100%;
+}
+button {
+  margin: 10px;
 }
 </style>
