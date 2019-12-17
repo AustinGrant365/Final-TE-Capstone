@@ -82,7 +82,6 @@ export default {
   },
   methods: {
     register() {
-      console.log(process.env.BASE_URL);
       //fetch(`${process.env.VUE_APP_REMOTE_API}/register`, {
       fetch(`${this.homeUrl}/register`, {
         method: "POST",
