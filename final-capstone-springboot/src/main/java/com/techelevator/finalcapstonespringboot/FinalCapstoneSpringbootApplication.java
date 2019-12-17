@@ -16,7 +16,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 public class FinalCapstoneSpringbootApplication {
 
 	public static void main(String[] args) {
-		//SpringApplication.run(FinalCapstoneSpringbootApplication.class, args);
+//		SpringApplication.run(FinalCapstoneSpringbootApplication.class, args);
 
         SpringApplication app = new SpringApplication(FinalCapstoneSpringbootApplication.class);
         app.setDefaultProperties(Collections

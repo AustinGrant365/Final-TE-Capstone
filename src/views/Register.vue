@@ -14,10 +14,10 @@
           >There were problems registering this user.</div>
 
           <p>Select account type:</p>
-          <input type="radio" id="student" name="account-type" value="student" />
+          <input type="radio" id="student" name="account-type" value="5" v-model="user.role"/>
           <label for="student">Student</label>
           <br />
-          <input type="radio" id="employer" name="account-type" value="employer" />
+          <input type="radio" id="employer" name="account-type" value="2" v-model="user.role" />
           <label for="employer">Employer</label>
 
           <br />
@@ -51,7 +51,9 @@
             required
           />
           <br />
+          <router-link to="/addprofile">
           <button class="btn btn-lg btn-primary btn-block" type="submit">Create Account</button>
+          </router-link>
           <br />
           <router-link :to="{ name: 'login' }">
             <small>If you already have an account, click here.</small>
@@ -78,7 +80,7 @@ export default {
         username: "",
         password: "",
         confirmPassword: "",
-        role: 5
+        role: ""
       },
       registrationErrors: false,
       homeUrl: "http://localhost:8083"

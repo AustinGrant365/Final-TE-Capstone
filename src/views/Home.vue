@@ -1,68 +1,52 @@
 <template>
-
   <div class="grid-container">
+    <div class="username grid-area">
+      <img :src="`https://ui-avatars.com/api/?name=` + firstName + `+` + lastName + `&size=150`" class="default-image"/>
+      <br />
+      <h4>{{ username }}</h4>
+    </div>
 
-    
+    <div class="bio grid-area">
+      <label>Bio:
+      <p>{{ bio }}</p>
+      </label>
+      <label> Experience:
+      <div class="experience" v-for="jobs in experience" v-bind:key="jobs.id">
+        <h4>{{ jobs.jobtitle }}</h4>
 
-      <div class="username grid-area">
-        <img v-bind:src="require(`@/assets/${image}.jpg`)" class="default-image" alt="profile-pic"
-          height="150px"
-          width="150px"
-         />
-        <br>
-        <h4>{{ username }}</h4>
+        <h3>{{ jobs.startdate }}</h3>
+
+        <p>{{ jobs.enddate }}</p>
       </div>
+      </label>
+      <br>
+      <router-link to="/editprofile">
+        <button type="button" class="btn btn-primary">Edit Profile</button>
+      </router-link>
+    </div>
 
-      <div class="bio grid-area">
-        
-          <h2>Bio:</h2>
-          <p>{{ bio }}</p>
-        
-      </div>
+    <div class="tools grid-area">
+      <h2>Tools:</h2>
 
-      <div class="tools grid-area">
-        
-        <h2>Tools:</h2>
+      <router-link to="/addprofile">
+        <button type="button" class="btn btn-primary">Add to Profile</button>
+      </router-link>
 
-          <router-link to="/editprofile"><button type="button" class="btn btn-primary">Edit Profile</button></router-link>
-          <router-link to="/addprofile"><button type="button" class="btn btn-primary">Add to Profile</button></router-link>
+      
+    </div>
 
-        <ul>
-          <li>change username</li>
-          <li>edit bio</li>
-          <li>add portfolio</li>
-          <li>invite user</li>
-          <li>add experience</li>
-          <li>add education</li>
-          <li>all editing links</li>
+    <div class="newsfeed grid-area">
+      <h1>newsfeed:</h1>
 
-        </ul>
-
-
-
-
-
-
-
-      </div>
-
-      <div class="newsfeed grid-area">
-          
-           <h1>newsfeed:</h1>
-
-          <ul>
-          <li>portfolio</li>
-          <li>student profile</li>
-          <li>blog</li>
-          <li>etc</li>
-          <li>advertisement</li>
-          <li>fake news</li>
-          
-
-        </ul>
-      </div>
-
-    
+      <ul>
+        <li>portfolio</li>
+        <li>student profile</li>
+        <li>blog</li>
+        <li>etc</li>
+        <li>advertisement</li>
+        <li>fake news</li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -72,19 +56,45 @@ export default {
 
   data() {
     return {
-    image: "default",
-    username: 'Chris Day',
-    bio: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-    }
+      image: "default",
+      username: "Chris Day",
+      firstName: "Chris",
+      lastName: "Day", 
+      bio:
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+    };
+
+    experience: [
+        {
+          jobtitle: "Plumber",
+          startdate: "01/23/2018",
+          enddate: "present"
+        }
+      ]
   }
-
-  // methods: {
-  //   getImage(image){
-  //     return "'../assets/' + default.jpg"
-  //   }
+  // register() {
+  //   //fetch(`${process.env.VUE_APP_REMOTE_API}/register`, {
+  //   fetch(`${this.homeUrl}/register`, {
+  //     method: "POST",
+  //     headers: {
+  //       Accept: "application/json",
+  //       "Content-Type": "application/json"
+  //     },
+  //     body: JSON.stringify(this.user)
+  //   })
+  //     .then(response => {
+  //       console.log(response.json());
+  //       if (response.ok) {
+  //         this.$router.push({
+  //           path: "/login",
+  //           query: { registration: "success" }
+  //         });
+  //       } else {
+  //         this.registrationErrors = true;
+  //       }
+  //     })
+  //     .then(err => console.error(err));
   // }
-
- 
 };
 </script>
 
@@ -107,13 +117,13 @@ export default {
 }
 
 .username {
-  box-sizing: border-box; 
+  box-sizing: border-box;
   grid-area: username;
   text-align: center;
   border: 3px solid;
   border-radius: 15px;
   border-color: #3281a8;
-  margin:5px;
+  margin: 5px;
 }
 
 .newsfeed {
@@ -129,7 +139,7 @@ export default {
 }
 
 .default-image {
+  text-align: center;
   border-radius: 15px;
-}
-
+  margin: 10px;}
 </style>
