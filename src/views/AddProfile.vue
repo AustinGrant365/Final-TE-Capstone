@@ -1,15 +1,17 @@
 <template>
-<div class="grid-container" style="background-image: url('https://www.intechnic.com/hs-fs/hubfs/intechnic_2017/assets/images/landing/footer/map-xl.jpg?width=1680&height=824&name=map-xl.jpg');">
-        <h3 class="title grid-area">Tell us a bit about yourself </h3>
+  <div
+    class="grid-container"
+    style="background-image: url('https://www.intechnic.com/hs-fs/hubfs/intechnic_2017/assets/images/landing/footer/map-xl.jpg?width=1680&height=824&name=map-xl.jpg');"
+  >
+    <h3 class="title grid-area">Tell us a bit about yourself</h3>
     <div class="add grid-area">
-
-      <form class="form-add-profile" @submit.prevent="add">
+      <form class="form-add-profile" @submit.prevent="addUserProfile">
         <input
           type="text"
           id="firstname"
           class="form-control"
           placeholder="First Name"
-          v-model="add.firstName"
+          v-model="profile.firstName"
         />
 
         <input
@@ -17,73 +19,72 @@
           id="lastname"
           class="form-control"
           placeholder="Last Name"
-          v-model="add.lastName"
+          v-model="profile.lastName"
         />
-       
+
         <input
           type="text"
           id="email"
           class="form-control"
           placeholder="Email Address"
-          v-model="add.email"
+          v-model="profile.email"
         />
-     
+
         <textarea
-            rows="2"
-            cols="50"
-            class="form-control"
-            placeholder="Summary"
-            v-model="add.summary"
-          />
+          rows="2"
+          cols="50"
+          class="form-control"
+          placeholder="Summary"
+          v-model="profile.summary"
+        />
 
         <div class="number-entry">
           <label>
             Phone Number
-          <input type="number"
-          id="phonenumber"
-          class="form-control"
-          placeholder="(xxx)xxx-xxxx"
-          v-model="add.phoneNumber"
-          />  
+            <input
+              type="number"
+              id="phonenumber"
+              class="form-control"
+              placeholder="xxxxxxxxxx"
+              v-model="profile.phoneNumber"
+            />
           </label>
-          <label >
+          <label>
             Date of Birth
             <input
               type="date"
               id="birthdate"
               class="form-control"
-              v-model="add.birthday"
+              v-model="profile.birthday"
             />
           </label>
 
-          
-          <label >
+          <label>
             Select Cohort
-            <select id="cohort" class="form-control"  v-model="add.cohort">
-  <option value="0">Cohort 0</option>
-  <option value="1">Cohort 1</option>
-  <option value="2">Cohort 2</option>
-  <option value="3">Cohort 3</option>
-</select>
+            <select id="cohort" class="form-control" v-model="profile.cohort">
+              <option value="Cohort 0">Cohort 0</option>
+              <option value="Cohort 01">Cohort 1</option>
+              <option value="Cohort 02">Cohort 2</option>
+              <option value="Cohort 03">Cohort 3</option>
+            </select>
           </label>
         </div>
-         
+
         <div class="button">
           <router-link to="/">
-          <button type="submit">Submit Profile</button>
+            <button type="submit">Submit Profile</button>
           </router-link>
         </div>
       </form>
-      </div>
-</div>
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
-
   data() {
     return {
-  add: {
+      profile: {
         firstName: "",
         lastName: "",
         email: "",
@@ -92,44 +93,40 @@ export default {
         birthday: "",
         cohort: ""
       },
-     registrationErrors: false,
+      registrationErrors: false,
       homeUrl: "http://localhost:8083"
-  };
+    };
   },
-  
-methods: {
 
-
-
-  add() {
+  methods: {
+    addUserProfile() {
       //fetch(`${process.env.VUE_APP_REMOTE_API}/register`, {
-        fetch(`${this.homeUrl}/addprofile`, {
-            method: "POST",
+      fetch(`${this.homeUrl}/addprofile`, {
+        method: "POST",
         headers: {
-            Accept: "application/json",
+          Accept: "application/json",
           "Content-Type": "application/json"
         },
-        body: JSON.stringify(this.user)
+        body: JSON.stringify(this.profile)
       })
         .then(response => {
-            console.log(response.json());
+          console.log(response.json());
           if (response.ok) {
-              this.$router.push({
-                  path: "/login",
-              query: { registration: "success" }
+            this.$router.push({
+              path: "/",
+              query: { profileSaved: "success" }
             });
           } else {
-              this.registrationErrors = true;
+            this.registrationErrors = true;
           }
         })
         .then(err => console.error(err));
     }
-}
-}
+  }
+};
 </script>
 
 <style scoped>
-
 .grid-container {
   display: grid;
   grid-template-columns: 2fr 3fr 2fr;
@@ -141,16 +138,15 @@ methods: {
 }
 
 @media only screen and (max-width: 768px) {
-    .grid-container {
-  display: grid;
-  grid-template-columns: 1fr 4fr 1fr;
-  grid-template-areas:
-    ". t . "
-    ". add . ";
-  grid-gap: 20px;
-  text-align: center;
-}
-    
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+    grid-template-areas:
+      ". t . "
+      ". add . ";
+    grid-gap: 20px;
+    text-align: center;
+  }
 }
 .add {
   grid-area: add;
@@ -196,14 +192,13 @@ textarea {
 .number-entry {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-areas:
-    "co pn bd ";
+  grid-template-areas: "co pn bd ";
   grid-gap: 10px;
 }
-#birthdate{
+#birthdate {
   grid-area: bd;
 }
-#phonenumber{
+#phonenumber {
   grid-area: pn;
 }
 #cohort {
