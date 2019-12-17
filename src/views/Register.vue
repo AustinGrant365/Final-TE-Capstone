@@ -95,7 +95,7 @@ export default {
           console.log(response.json());
           if (response.ok) {
             this.$router.push({
-              path: "/addprofile",
+              path: "/login",
               query: { registration: "success" }
             });
           } else {
