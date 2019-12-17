@@ -13,7 +13,7 @@
 
     <div class="bio grid-area">
       <label>
-        <h4>Bio:</h4>
+        <h4 id="bio-title">Bio:</h4>
         <p class="bio-script">{{ bio }}</p>
       </label>
       <router-link to="/editprofile">
@@ -93,7 +93,7 @@ export default {
     return {
       image: "default",
       username: "The Dude",
-      firstName: "Margaret",
+      firstName: "Ryan",
       lastName: "Philips",
       bio:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
@@ -222,13 +222,16 @@ h4 {
 .r {
   grid-area: r;
 }
-.bio-script {
+.bio {
   padding: 10px;
   border-radius: 15px;
   margin: 5px;
   background-color: #dfdede;
   border: 10px solid;
   border-color: #eeeded;
+}
+#bio-title {
+  color:black;
 }
 textarea {
   box-sizing: border-box;
