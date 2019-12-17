@@ -50,11 +50,9 @@
     </div>
 
     <div class="tools grid-area">
-      <a href="#" v-on:click.prevent="showForm = true" v-if="showForm === false">
-        Add to Portfolio
-      </a>
+        <h5>Add to Portfolio</h5>
       <label> 
-      <form class="porfolio" v-if="showForm === true" v-on:submit.prevent="addNewReview">
+      <form class="porfolio">
         <input type="text" id="firstname" class="form-control" placeholder="Project name" />
 
         <textarea rows="2" cols="50" class="form-control" placeholder="Description" />
@@ -70,7 +68,7 @@
             <input type="date" id="birthdate" class="form-control" />
           </label>
         </div>
-        <router-link to="/addprofile">
+        <router-link to="/">
           <button type="button" class="btn btn-primary">Add to Portfolio</button>
         </router-link>
       </form>
@@ -99,8 +97,8 @@ export default {
   data() {
     return {
       image: "default",
-      username: "Master Debater",
-      firstName: "rom",
+      username: "The Dude",
+      firstName: "Margaret",
       lastName: "Philips",
       bio:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
@@ -148,30 +146,32 @@ export default {
         }
       ]
     };
+  },
+  register() {
+
+    let user = getUser();
+    //fetch(`${process.env.VUE_APP_REMOTE_API}/register`, {
+    fetch(`${this.homeUrl}`, {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(this.user)
+    })
+      .then(response => {
+        console.log(response.json());
+        if (response.ok) {
+          this.$router.push({
+            path: "/login",
+            query: { registration: "success" }
+          });
+        } else {
+          this.registrationErrors = true;
+        }
+      })
+      .then(err => console.error(err));
   }
-  // register() {
-  //   //fetch(`${process.env.VUE_APP_REMOTE_API}/register`, {
-  //   fetch(`${this.homeUrl}/register`, {
-  //     method: "POST",
-  //     headers: {
-  //       Accept: "application/json",
-  //       "Content-Type": "application/json"
-  //     },
-  //     body: JSON.stringify(this.user)
-  //   })
-  //     .then(response => {
-  //       console.log(response.json());
-  //       if (response.ok) {
-  //         this.$router.push({
-  //           path: "/login",
-  //           query: { registration: "success" }
-  //         });
-  //       } else {
-  //         this.registrationErrors = true;
-  //       }
-  //     })
-  //     .then(err => console.error(err));
-  // }
 };
 </script>
 
