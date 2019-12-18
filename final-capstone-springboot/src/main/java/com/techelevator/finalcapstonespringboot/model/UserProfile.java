@@ -6,13 +6,12 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
-import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
 @Entity(name = "userProfile")
 @Table(name = "user_profile")
-public class UserProfile implements Serializable {
+public class UserProfile {
     
     @Id
     private Long userId;
