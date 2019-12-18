@@ -72,6 +72,7 @@
       <h5>Add to Portfolio</h5>
       <label>
         <form class="porfolio">
+          <div class="input-port">
           <input type="text" id="firstname" class="form-control" placeholder="Project name" />
 
           <textarea rows="2" cols="50" class="form-control" placeholder="Description" />
@@ -89,6 +90,7 @@
           <router-link to="/">
             <button type="button" class="btn btn-primary">Add to Portfolio</button>
           </router-link>
+          </div>
         </form>
       </label>
     </div>
@@ -231,6 +233,9 @@ h4 {
   background-color: #dfdede;
   border: 10px solid;
   border-color: #eeeded;
+}
+.input-port {
+  padding-right: 15px;
 }
 #bio-title {
   color: black;
