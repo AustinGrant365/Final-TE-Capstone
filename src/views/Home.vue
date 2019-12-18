@@ -1,20 +1,27 @@
 <template>
-  <div class="grid-container" style="background-image: url('https://www.intechnic.com/hs-fs/hubfs/intechnic_2017/assets/images/landing/footer/map-xl.jpg?width=1680&height=824&name=map-xl.jpg');">
+  <div
+    class="grid-container"
+    style="background-image: url('https://www.intechnic.com/hs-fs/hubfs/intechnic_2017/assets/images/landing/footer/map-xl.jpg?width=1680&height=824&name=map-xl.jpg');"
+  >
     <div class="username grid-area">
       <div class="userbox">
         <img
-          :src="`https://ui-avatars.com/api/?name=` + firstName + `+` + lastName + `&size=150`"
+          :src="`https://ui-avatars.com/api/?name=` + profile.firstName + `+` + profile.lastName + `&size=150`"
           class="default-image"
         />
         <br />
-        <h3>{{ username }}</h3>
+        <h3>{{ profile.username }}</h3>
       </div>
     </div>
 
     <div class="bio grid-area">
       <label>
         <h4 id="bio-title">Bio:</h4>
-        <p class="bio-script">{{ bio }}</p>
+        <p class="bio-script">{{ profile.summary }}</p>
+        <p class="bio-script">Phone Number: {{profile.phoneNumber}}  </p>
+        <p class="bio-script">Email Address: {{profile.email}}</p>
+        <p class="bio-script">Birth Date: {{profile.birthday}}</p>
+        <p class="bio-script">Cohort: {{profile.cohort}}</p>
       </label>
       <router-link to="/editprofile">
         <button type="button" class="btn btn-primary">Edit Resume Information</button>
@@ -31,7 +38,9 @@
       <label>
         <h4>Experience:</h4>
         <div class="experience" v-for="jobs in experience" v-bind:key="jobs.id">
-          <h5 class="jt grid-area">{{ jobs.jobtitle }} from {{ jobs.startdate }} to {{ jobs.enddate }}</h5>
+          <h5
+            class="jt grid-area"
+          >{{ jobs.jobtitle }} from {{ jobs.startdate }} to {{ jobs.enddate }}</h5>
 
           <p class="r grid-area">{{ jobs.description}}</p>
         </div>
@@ -39,7 +48,9 @@
       <label>
         <h4>Education:</h4>
         <div class="experience" v-for="school in education" v-bind:key="school.id">
-          <h5 class="jt grid-area">{{ school.school }} from {{ school.startdate }} to {{ school.enddate }}</h5>
+          <h5
+            class="jt grid-area"
+          >{{ school.school }} from {{ school.startdate }} to {{ school.enddate }}</h5>
 
           <p class="r grid-area">{{ school.description}}</p>
         </div>
@@ -47,7 +58,9 @@
       <label>
         <h4>Portfolio:</h4>
         <div class="experience" v-for="project in portfolio" v-bind:key="portfolio.id">
-          <h5 class="jt grid-area">{{ project.name }} from {{ project.startdate }} to {{ project.enddate }}</h5>
+          <h5
+            class="jt grid-area"
+          >{{ project.name }} from {{ project.startdate }} to {{ project.enddate }}</h5>
 
           <p class="r grid-area">{{ project.description}}</p>
         </div>
@@ -56,48 +69,50 @@
     </div>
 
     <div class="tools grid-area">
-        <h5>Add to Portfolio</h5>
-      <label> 
-      <form class="porfolio">
-        <input type="text" id="firstname" class="form-control" placeholder="Project name" />
+      <h5>Add to Portfolio</h5>
+      <label>
+        <form class="porfolio">
+          <input type="text" id="firstname" class="form-control" placeholder="Project name" />
 
-        <textarea rows="2" cols="50" class="form-control" placeholder="Description" />
+          <textarea rows="2" cols="50" class="form-control" placeholder="Description" />
 
-        <div class="number-entry grid-area">
-          
-          <label>
-            Start Date
-            <input type="date" id="sd grid-area" class="form-control" />
-          </label>
-          <label>
-            End Date
-            <input type="date" id="ed grid area" class="form-control" />
-          </label>
-        </div>
-        <router-link to="/">
-          <button type="button" class="btn btn-primary">Add to Portfolio</button>
-        </router-link>
-      </form>
+          <div class="number-entry grid-area">
+            <label>
+              Start Date
+              <input type="date" id="sd grid-area" class="form-control" />
+            </label>
+            <label>
+              End Date
+              <input type="date" id="ed grid area" class="form-control" />
+            </label>
+          </div>
+          <router-link to="/">
+            <button type="button" class="btn btn-primary">Add to Portfolio</button>
+          </router-link>
+        </form>
       </label>
     </div>
-
-    
   </div>
 </template>
 
 <script>
+import auth from "../auth";
+
 export default {
   name: "home",
 
   data() {
     return {
-      image: "default",
-      username: "The Dude",
-      firstName: "Ryan",
-      lastName: "Philips",
-      bio:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-
+      profile: {
+        username: "username",
+        firstName: "firstName",
+        lastName: "lastName",
+        email: "email@email.om",
+        summary: "bio",
+        phoneNumber: "9999999999",
+        birthday: "birthday",
+        cohort: "cohort"
+      },
       experience: [
         {
           jobtitle: "Plumber",
@@ -142,30 +157,19 @@ export default {
       ]
     };
   },
-  register() {
-
-    let user = getUser();
-    //fetch(`${process.env.VUE_APP_REMOTE_API}/register`, {
-    fetch(`${this.homeUrl}`, {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(this.user)
-    })
-      .then(response => {
-        console.log(response.json());
-        if (response.ok) {
-          this.$router.push({
-            path: "/login",
-            query: { registration: "success" }
-          });
-        } else {
-          this.registrationErrors = true;
-        }
-      })
-      .then(err => console.error(err));
+  methods: {
+    getUserInfo() {
+      this.profile.username = auth.getUser().username;
+      console.log(this.profile);
+      fetch(`${this.homeUrl}`, {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(this.profile)
+      });
+    }
   }
 };
 </script>
@@ -178,16 +182,14 @@ export default {
     ". . . . . . "
     ". username bio bio bio ."
     ". resume resume resume resume ."
-    ". tools tools tools tools ."
-    ". newsfeed newsfeed newsfeed newsfeed .";
+    ". tools tools tools tools .";
 
   grid-gap: 20px;
 }
 .number-entry {
-    display: grid;
+  display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-areas:
-    "sd ed ";
+  grid-template-areas: "sd ed ";
   grid-gap: 20px;
 }
 .resume {
@@ -198,7 +200,7 @@ h4 {
 }
 .experience {
   display: grid;
-  grid-template-columns: 1fr 1fr ;
+  grid-template-columns: 1fr 1fr;
   grid-template-areas:
     "jt jt "
     "r r ";
@@ -231,7 +233,7 @@ h4 {
   border-color: #eeeded;
 }
 #bio-title {
-  color:black;
+  color: black;
 }
 textarea {
   box-sizing: border-box;
@@ -240,7 +242,7 @@ textarea {
   border-width: 1px;
   border-style: solid;
   padding: 16px;
-  
+
   outline: 0;
   font-family: inherit;
   font-size: 0.95em;
@@ -250,7 +252,7 @@ textarea {
   grid-area: bio;
   padding: 10px;
 }
-input{
+input {
   margin-right: 10px;
 }
 .username {
@@ -288,7 +290,6 @@ input{
 }
 .portfolio {
   width: 100%;
-  
 }
 
 label {

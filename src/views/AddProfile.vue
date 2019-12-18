@@ -72,7 +72,7 @@
 
         <div class="button">
           <router-link to="/addprofile">
-            <button type="submit">Submit Profile</button>
+            <button v-on:click="addUserProfile" type="submit">Submit Profile</button>
           </router-link>
         </div>
       </form>

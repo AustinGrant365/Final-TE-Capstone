@@ -135,11 +135,13 @@ export default {
   
 }
 
+
 #login-container {
   background: #ebebeb;
   padding: 12px;
   border-radius: 15px;
   width: 25%;
+  margin-bottom: 350px;
 }
 
 #login button[type="submit"] {
