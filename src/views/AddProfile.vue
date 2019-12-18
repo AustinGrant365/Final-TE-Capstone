@@ -104,8 +104,9 @@ export default {
     addUserProfile() {
       //fetch(`${process.env.VUE_APP_REMOTE_API}/register`, {
       //fetch(`${this.homeUrl}/addprofile`, {
-      this.profile.username = auth.getUser().username;
-      console.log(this.profile);
+      console.log(JSON.stringify(auth.getUser()));
+      this.profile["username"] = auth.getUser()["sub"];
+      console.log(JSON.stringify(this.profile));
       fetch(`${this.homeUrl}/addprofile`, {
         method: "POST",
         headers: {

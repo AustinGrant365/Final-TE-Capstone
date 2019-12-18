@@ -23,14 +23,16 @@ public class UserProfileController {
     
     @PostMapping(path = "/addprofile", produces = "application/json")
     public UserProfile addUserProfile(@RequestBody UserProfile userProfile) {
-        System.out.println(userProfile.toString());
-        System.out.println(userProfile.getUsername());
+        User user = userRep.findByUsername(userProfile.getUsername());
+
         UserProfile existingProfile = userProfRep.findByUsername(userProfile.getUsername());
+        if (existingProfile == null) {
+            existingProfile = new UserProfile();
+            user.setUserProfile(existingProfile);
+            existingProfile.setUser(user);
+        }
         existingProfile.setAllFields(userProfile);
-        if (existingProfile.getUser() == null)
-            userProfile.setUser(userRep.findByUsername(userProfile.getUsername()));
-        //Long userID = userRep.findByUsername(username).getId();
-        //userProfile.setUserId(Long.valueOf(1201));
+
         return userProfRep.save(existingProfile);
     }
 }

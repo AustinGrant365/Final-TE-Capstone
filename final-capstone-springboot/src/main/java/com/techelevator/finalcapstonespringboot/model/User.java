@@ -43,8 +43,17 @@ public class User {
     @JsonIgnore
     private String salt;
     
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    @JsonIgnore
+    @OneToOne(mappedBy = "user")
     private UserProfile userProfile;
+    
+    public UserProfile getUserProfile() {
+        return userProfile;
+    }
+    
+    public void setUserProfile(UserProfile userProfile) {
+        this.userProfile = userProfile;
+    }
     
     public Long getId() {
         return id;
