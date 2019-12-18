@@ -102,7 +102,7 @@ export default {
             }
             auth.saveToken(token);
             console.log(auth.getUser());
-            this.$router.push("/");
+            this.$router.push("/addprofile");
           }
         })
         .catch(err => console.error(err));

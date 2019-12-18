@@ -120,7 +120,7 @@ export default {
           if (response.ok) {
             console.log("response ok");
             this.$router.push({
-              path: "/addprofile",
+              path: "/",
               query: { profileSaved: "success" }
             });
           } else {

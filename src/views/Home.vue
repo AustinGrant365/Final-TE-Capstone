@@ -105,16 +105,16 @@ export default {
 
   data() {
     return {
-      // profile: {
-      //   username: "username",
-      //   firstName: "firstName",
-      //   lastName: "lastName",
-      //   email: "email@email.om",
-      //   summary: "bio",
-      //   phoneNumber: "9999999999",
-      //   birthday: "birthday",
-      //   cohort: "cohort"
-      // },
+      profile: {
+        username: "username",
+        firstName: "firstName",
+        lastName: "lastName",
+        email: "email@email.om",
+        summary: "bio",
+        phoneNumber: "9999999999",
+        birthday: "birthday",
+        cohort: "cohort"
+      },
       experience: [
         {
           jobtitle: "Plumber",
