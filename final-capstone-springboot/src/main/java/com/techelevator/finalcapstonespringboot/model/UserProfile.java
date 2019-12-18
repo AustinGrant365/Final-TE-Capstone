@@ -5,12 +5,14 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
-@Entity(name = "UserProfile")
+@Entity(name = "userProfile")
 @Table(name = "user_profile")
-public class UserProfile {
+public class UserProfile implements Serializable {
     
     @Id
     private Long userId;
@@ -32,6 +34,7 @@ public class UserProfile {
     @Pattern(regexp = "(^$|[0-9]{10})", message = "Phone number must be 10 digits.")
     private String phoneNumber;
     
+    @Size(max = 1000)
     @Column(name = "summary", updatable = true, nullable = true)
     private String summary;
     
