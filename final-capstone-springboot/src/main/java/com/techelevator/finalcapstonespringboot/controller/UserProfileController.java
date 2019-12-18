@@ -6,10 +6,7 @@ import com.techelevator.finalcapstonespringboot.model.UserProfile;
 import com.techelevator.finalcapstonespringboot.repository.UserProfileRepository;
 import com.techelevator.finalcapstonespringboot.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin
 @RestController
@@ -34,5 +31,13 @@ public class UserProfileController {
         existingProfile.setAllFields(userProfile);
 
         return userProfRep.save(existingProfile);
+    }
+    
+    @GetMapping(path = "/getprofile", produces = "application/json")
+    public UserProfile getProfileByUsername(@RequestParam String username) {
+        UserProfile userProfile = userProfRep.findByUsername(username);
+//        System.out.println("user: " + username);
+//        System.out.println(userProfile);
+        return userProfile;
     }
 }

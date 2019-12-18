@@ -18,7 +18,7 @@
       <label>
         <h4 id="bio-title">Bio:</h4>
         <p class="bio-script">{{ profile.summary }}</p>
-        <p class="bio-script">Phone Number: {{profile.phoneNumber}}  </p>
+        <p class="bio-script">Phone Number: {{profile.phoneNumber}}</p>
         <p class="bio-script">Email Address: {{profile.email}}</p>
         <p class="bio-script">Birth Date: {{profile.birthday}}</p>
         <p class="bio-script">Cohort: {{profile.cohort}}</p>
@@ -103,16 +103,16 @@ export default {
 
   data() {
     return {
-      profile: {
-        username: "username",
-        firstName: "firstName",
-        lastName: "lastName",
-        email: "email@email.om",
-        summary: "bio",
-        phoneNumber: "9999999999",
-        birthday: "birthday",
-        cohort: "cohort"
-      },
+      // profile: {
+      //   username: "username",
+      //   firstName: "firstName",
+      //   lastName: "lastName",
+      //   email: "email@email.om",
+      //   summary: "bio",
+      //   phoneNumber: "9999999999",
+      //   birthday: "birthday",
+      //   cohort: "cohort"
+      // },
       experience: [
         {
           jobtitle: "Plumber",
@@ -154,21 +154,36 @@ export default {
           enddate: "February of 02",
           description: "I've made some mistakes"
         }
-      ]
+      ],
+      homeUrl: "http://localhost:8083"
     };
   },
   methods: {
     getUserInfo() {
-      this.profile.username = auth.getUser().username;
-      console.log(this.profile);
-      fetch(`${this.homeUrl}`, {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(this.profile)
-      });
+      let userName = auth.getUser()["sub"];
+      //this.profile.username = auth.getUser().username;
+      console.log("username: " + userName);
+
+      fetch(`${this.homeUrl}/getprofile` + "?=" + userName)
+        //, {
+        // method: "GET",
+        // headers: {
+        //   Accept: "application/json",
+        //   "Content-Type": "application/json"
+        // }
+        //body: JSON.stringify(userName)
+        //}
+        //)
+        .then(response => {
+          console.log(response.json());
+          if (response.ok) {
+            console.log("response ok");
+            this.profile = response.json();
+          } else {
+            //this.profileSaveErrors = true;
+          }
+        })
+        .then(err => console.error(err));
     }
   }
 };
