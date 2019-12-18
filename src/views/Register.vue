@@ -15,14 +15,17 @@
           >There were problems registering this user.</div>
 
           <p><u>Select account type:</u></p>
+          <div class="testcenter">
           <input type="radio" id="student" name="account-type" v-model="user.role" value="5" />
           <label for="student">Student</label>
           <br />
           <input type="radio" id="employer" name="account-type" v-model="user.role" value="2" />
           <label for="employer">Employer</label>
+          </div>
 
           <br />
           <br />
+          <div class="t2">
           <input
             type="text"
             id="username"
@@ -50,6 +53,7 @@
             v-model="user.confirmPassword"
             required
           />
+          </div>
           <br />
           <button class="btn btn-lg btn-primary btn-block hvr-back-pulse" type="submit">Create Account</button>
           <br />
@@ -243,6 +247,14 @@ button[type="submit"]:focus {
 }
 h1 {
   color: white;
+}
+
+.testcenter {
+  padding-right: 20px; 
+}
+
+.t2 {
+  padding-right: 20px; 
 }
 
 </style> 
