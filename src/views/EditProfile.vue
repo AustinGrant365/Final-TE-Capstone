@@ -2,7 +2,7 @@
   <div class="grid-container"
    style="background-image: url('https://www.intechnic.com/hs-fs/hubfs/intechnic_2017/assets/images/landing/footer/map-xl.jpg?width=1680&height=824&name=map-xl.jpg');"
   >
-    <form class="form grid-area">
+    <!-- <form class="form grid-area">
       <div class="experience grid-area">
         <h3>Add Job Experience</h3>
 
@@ -75,8 +75,8 @@
         <div class="button">
           <br />
           <button type="submit">Add Education</button>
-        </div>
-      </div>
+        </div> -->
+      <!-- </div> -->
       <div class="account">
         <div class="bio grid-area">
           <h3>Edit Bio</h3>

@@ -23,19 +23,15 @@
         <p class="bio-script">Birth Date: {{profile.birthday}}</p>
         <p class="bio-script">Cohort: {{profile.cohort}}</p>
       </label>
-      <router-link to="/editprofile">
-        <button type="button" class="btn btn-primary">Edit Resume Information</button>
-      </router-link>
+     
       <router-link to="/addprofile">
         <button type="button" class="btn btn-primary">Edit Account Information</button>
       </router-link>
-      <router-link to="/">
-        <button type="button" class="btn btn-primary">Make Profile Visible</button>
-      </router-link>
+     
     </div>
 
     <div class="resume grid-area">
-      <label>
+      <!-- <label>
         <h4>Experience:</h4>
         <div class="experience" v-for="jobs in experience" v-bind:key="jobs.id">
           <h5
@@ -54,7 +50,7 @@
 
           <p class="r grid-area">{{ school.description}}</p>
         </div>
-      </label>
+      </label> -->
       <label>
         <h4>Portfolio:</h4>
         <div class="experience" v-for="project in portfolio" v-bind:key="project.id">
