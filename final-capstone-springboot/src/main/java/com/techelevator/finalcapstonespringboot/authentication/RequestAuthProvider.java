@@ -45,7 +45,10 @@ public class RequestAuthProvider implements AuthProvider {
     @Override
     public boolean signIn(User user) {
         User currentUser       = repository.findByUsername(user.getUsername());
-        User authenticatedUser = repository.findByUsernameAndPassword(currentUser.getUsername(), currentUser.getPassword());
+        User authenticatedUser = null;
+        if (currentUser != null)
+            authenticatedUser = repository.findByUsernameAndPassword(currentUser.getUsername(), currentUser.getPassword());
+
 //        System.out.println(user.toString());
 //        System.out.println(currentUser.toString());
 //        System.out.println(authenticatedUser.toString());
