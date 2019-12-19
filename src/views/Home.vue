@@ -57,7 +57,7 @@
       </label>
       <label>
         <h4>Portfolio:</h4>
-        <div class="experience" v-for="project in portfolio" v-bind:key="portfolio.id">
+        <div class="experience" v-for="project in portfolio" v-bind:key="project.id">
           <h5
             class="jt grid-area"
           >{{ project.name }} from {{ project.startdate }} to {{ project.enddate }}</h5>
@@ -73,23 +73,23 @@
       <label>
         <form class="porfolio">
           <div class="input-port">
-          <input type="text" id="firstname" class="form-control" placeholder="Project name" />
+            <input type="text" id="firstname" class="form-control" placeholder="Project name" />
 
-          <textarea rows="2" cols="50" class="form-control" placeholder="Description" />
+            <textarea rows="2" cols="50" class="form-control" placeholder="Description" />
 
-          <div class="number-entry grid-area">
-            <label>
-              Start Date
-              <input type="date" id="sd grid-area" class="form-control" />
-            </label>
-            <label>
-              End Date
-              <input type="date" id="ed grid area" class="form-control" />
-            </label>
-          </div>
-          <router-link to="/">
-            <button type="button" class="btn btn-primary">Add to Portfolio</button>
-          </router-link>
+            <div class="number-entry grid-area">
+              <label>
+                Start Date
+                <input type="date" id="sd grid-area" class="form-control" />
+              </label>
+              <label>
+                End Date
+                <input type="date" id="ed grid area" class="form-control" />
+              </label>
+            </div>
+            <router-link to="/">
+              <button type="button" class="btn btn-primary">Add to Portfolio</button>
+            </router-link>
           </div>
         </form>
       </label>
@@ -106,57 +106,17 @@ export default {
   data() {
     return {
       profile: {
-        username: "username",
-        firstName: "firstName",
-        lastName: "lastName",
-        email: "email@email.om",
-        summary: "bio",
-        phoneNumber: "9999999999",
-        birthday: "birthday",
-        cohort: "cohort"
+        firstName: "",
+        lastName: "",
+        summary: "",
+        email: "",
+        phoneNumber: "",
+        birthday: "",
+        cohort: ""
       },
-      experience: [
-        {
-          jobtitle: "Plumber",
-          startdate: "01/23/2018",
-          enddate: "present",
-          description: "Had to clean a LOT of shit"
-        },
-        {
-          jobtitle: "Janitor",
-          startdate: "04/2/2017",
-          enddate: "01/23/2018",
-          description: "Had to clean a LOT of floors"
-        }
-      ],
-      education: [
-        {
-          school: "Frankton VA",
-          startdate: "January of 02",
-          enddate: "February of 03",
-          description: "I've made some mistakes"
-        },
-        {
-          school: "Swartz Creek High",
-          startdate: "January of 01",
-          enddate: "February of 02",
-          description: "I've made some mistakes"
-        }
-      ],
-      portfolio: [
-        {
-          name: "Frankton VA",
-          startdate: "January of 02",
-          enddate: "February of 03",
-          description: "I've made some mistakes"
-        },
-        {
-          name: "Swartz Creek High",
-          startdate: "January of 01",
-          enddate: "February of 02",
-          description: "I've made some mistakes"
-        }
-      ],
+      experience: [],
+      education: [],
+      portfolio: [],
       homeUrl: "http://localhost:8083"
     };
   },
@@ -166,27 +126,32 @@ export default {
       //this.profile.username = auth.getUser().username;
       console.log("username: " + userName);
 
-      fetch(`${this.homeUrl}/getprofile` + "?=" + userName)
-        //, {
-        // method: "GET",
-        // headers: {
-        //   Accept: "application/json",
-        //   "Content-Type": "application/json"
-        // }
-        //body: JSON.stringify(userName)
-        //}
-        //)
+      fetch(`${this.homeUrl}/getprofile` + "?username=" + userName, {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${auth.getToken()}`
+        }
+      })
         .then(response => {
-          console.log(response.json());
           if (response.ok) {
-            console.log("response ok");
-            this.profile = response.json();
-          } else {
-            //this.profileSaveErrors = true;
+            return response.json();
           }
         })
-        .then(err => console.error(err));
+        .then(result => {
+          this.profile = result;
+          console.log(result);
+        });
     }
+    // getUserProfileInfo() {
+    //this.userName.bio
+
+    // }
+  },
+
+  created() {
+    this.getUserInfo();
   }
 };
 </script>
