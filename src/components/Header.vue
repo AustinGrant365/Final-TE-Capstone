@@ -25,20 +25,30 @@
               <strong>Register</strong>
             </font>
           </a>
+          <span @click="handleLogOut" v-if="isLoggedIn" class="nav-item hvr-pulse nav-link active">
+            <font color="white">
+              <strong>Log Out</strong>
+            </font>
+          </span>
           <a href="/about" class="nav-item hvr-pulse nav-link">
             <img class="info" src="../assets/infoi.png" alt="information" />
           </a>
         </div>
         <form class="form-inline">
-            <input type="text" id="search" class="s1 form-control" placeholder="What are you looking for?" />
-            <div class="input-group-append">
-              <router-link to="/searchlanding">
+          <input
+            type="text"
+            id="search"
+            class="s1 form-control"
+            placeholder="What are you looking for?"
+          />
+          <div class="input-group-append">
+            <router-link to="/searchlanding">
               <button type="button" class="btn btn-secondary hvr-pulse">
                 <img class="search" src="../assets/search.jpg" />
                 <i class="fa fa-search"></i>
               </button>
-              </router-link>
-            </div>
+            </router-link>
+          </div>
         </form>
       </div>
     </nav>
@@ -46,8 +56,24 @@
 </template>
 
 <script>
+import auth from "../auth";
+
 export default {
-  name: "Header"
+  name: "Header",
+  data() {
+    return {};
+  },
+  methods: {
+    handleLogOut() {
+      auth.destroyToken();
+      window.location.href = "/login";
+    }
+  },
+  computed: {
+    isLoggedIn() {
+      return auth.getUser() !== null;
+    }
+  }
 };
 </script>
 
@@ -126,19 +152,15 @@ img {
   animation-timing-function: linear;
   -webkit-animation-iteration-count: infinite;
   animation-iteration-count: infinite;
-   background-color: rgba(0, 0, 0, 0);
+  background-color: rgba(0, 0, 0, 0);
 }
-
 
 .s1 {
   background-color: #dbdbdb;
   border: none;
-  
-  
 }
 
 .s1:hover {
   background-color: white;
 }
-
 </style>

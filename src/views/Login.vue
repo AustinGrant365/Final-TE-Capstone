@@ -23,27 +23,28 @@
 
             <p>Log in to your Profolio</p>
             <div class="testcenter">
-            <input
-              type="text"
-              id="username"
-              class="form-control"
-              placeholder="Username"
-              v-model="user.username"
-              required
-              autofocus
-            />
-            
-            <label for="password" class="sr-only">
-              <br />
-            </label>
-           <input
-              type="password"
-              id="password"
-              class="form-control"
-              placeholder="Password"
-              v-model="user.password"
-              required
-            /></div>
+              <input
+                type="text"
+                id="username"
+                class="form-control"
+                placeholder="Username"
+                v-model="user.username"
+                required
+                autofocus
+              />
+
+              <label for="password" class="sr-only">
+                <br />
+              </label>
+              <input
+                type="password"
+                id="password"
+                class="form-control"
+                placeholder="Password"
+                v-model="user.password"
+                required
+              />
+            </div>
 
             <br />
             <button class="hvr-back-pulse" type="submit">Sign in</button>
@@ -102,7 +103,7 @@ export default {
             }
             auth.saveToken(token);
             console.log(auth.getUser());
-            this.$router.push("/addprofile");
+            window.location.href = "/addprofile";
           }
         })
         .catch(err => console.error(err));
@@ -132,9 +133,7 @@ export default {
   font-family: inherit;
   font-size: 0.95em;
   border-radius: 15px;
-  
 }
-
 
 #login-container {
   background: #ebebeb;
@@ -155,7 +154,6 @@ export default {
 
 #login button[type="submit"]:hover {
   background: #17c;
-  
 }
 
 #login button[type="submit"]:focus {
@@ -166,9 +164,6 @@ h2 {
   margin: auto;
   color: white;
 }
-
-
-
 
 /* Back Pulse */
 @-webkit-keyframes hvr-back-pulse {
@@ -193,7 +188,9 @@ h2 {
   -webkit-transition-property: color, background-color;
   transition-property: color, background-color;
 }
-.hvr-back-pulse:hover, .hvr-back-pulse:focus, .hvr-back-pulse:active {
+.hvr-back-pulse:hover,
+.hvr-back-pulse:focus,
+.hvr-back-pulse:active {
   -webkit-animation-name: hvr-back-pulse;
   animation-name: hvr-back-pulse;
   -webkit-animation-duration: 1s;
@@ -204,13 +201,12 @@ h2 {
   animation-timing-function: linear;
   -webkit-animation-iteration-count: infinite;
   animation-iteration-count: infinite;
-  background-color: #2098D1;
+  background-color: #2098d1;
   background-color: #2098d1;
   color: white;
 }
 
 .testcenter {
-  padding-right: 20px; 
+  padding-right: 20px;
 }
-
 </style>
